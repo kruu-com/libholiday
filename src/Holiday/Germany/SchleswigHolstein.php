@@ -12,8 +12,8 @@
  * @copyright  Copyright (c) 2012 Mayflower GmbH (http://www.mayflower.de)
  * @license    LGPL v3 (See LICENSE file)
  */
-namespace Holiday;
+namespace Holiday\Germany;
 
-class Bremen extends Germany
+class SchleswigHolstein extends Germany
 {
 }

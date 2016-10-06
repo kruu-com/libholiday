@@ -19,7 +19,7 @@ class BavariaTest extends \PHPUnit_Framework_TestCase
 {
     public function testEasterBug() {
         $utc      = new \DateTimeZone("UTC");
-        $by       = new Holiday\Bavaria($utc);
+        $by       = new Holiday\Germany\Bavaria($utc);
         $holidays = $by->between(
             new \DateTime("2012-04-09", $utc),
             new \DateTime("2012-04-09", $utc));

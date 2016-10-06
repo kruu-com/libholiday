@@ -12,9 +12,11 @@
  * @copyright  Copyright (c) 2012 Mayflower GmbH (http://www.mayflower.de)
  * @license    LGPL v3 (See LICENSE file)
  */
-namespace Holiday;
+namespace Holiday\Germany;
 
-class Hesse extends Germany
+use Holiday\Holiday;
+
+class Saarland extends Germany
 {
     protected function getHolidays($year)
     {
@@ -27,9 +29,13 @@ class Hesse extends Germany
         $date->modify("+60 days");
         $data[] = $date;
 
+        $data[] = new Holiday("15.8." . $year, "Mariä Himmelfahrt", $timezone);
+
         if($year == 2017) {
             $data[] = new Holiday("31.10." . $year, "Reformationstag", $timezone);
         }
+
+        $data[] = new Holiday("1.11." . $year, "Allerheiligen", $timezone);
 
         return $data;
     }

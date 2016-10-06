@@ -12,7 +12,11 @@
  * @copyright  Copyright (c) 2012 Mayflower GmbH (http://www.mayflower.de)
  * @license    LGPL v3 (See LICENSE file)
  */
-namespace Holiday;
+namespace Holiday\Germany;
+
+use Holiday\Calculator;
+use Holiday\Holiday;
+use const Holiday\NOTABLE;
 
 class Germany extends Calculator
 {

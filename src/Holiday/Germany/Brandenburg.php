@@ -12,26 +12,16 @@
  * @copyright  Copyright (c) 2012 Mayflower GmbH (http://www.mayflower.de)
  * @license    LGPL v3 (See LICENSE file)
  */
-namespace Holiday;
+namespace Holiday\Germany;
 
-class NorthRhineWestphalia extends Germany
+class Brandenburg extends Germany
 {
     protected function getHolidays($year)
     {
         $timezone = $this->timezone;
 
-        $easter = $this->getEaster($year);
         $data   = parent::getHolidays($year);
-
-        $date   = new Holiday($easter, "Fronleichnam", $timezone);
-        $date->modify("+60 days");
-        $data[] = $date;
-
-        if($year == 2017) {
-            $data[] = new Holiday("31.10." . $year, "Reformationstag", $timezone);
-        }
-
-        $data[] = new Holiday("1.11." . $year, "Allerheiligen", $timezone);
+        $data[] = new Holiday("31.10." . $year, "Reformationstag", $timezone);
 
         return $data;
     }
