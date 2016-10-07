@@ -55,17 +55,17 @@ class Netherlands extends Calculator
         $data   = array();
         $easter = $this->getEaster($year);
 
-        $data[] = (new Holiday($easter, "Goede vrijdag", $timezone, NOTABLE))->modify('-2 days');
-        $data[] = new Holiday($easter, "1ste paasdag", $timezone, NOTABLE);
-        $data[] = (new Holiday($easter, "1ste pinksterdag", $timezone, NOTABLE))->modify("+49 days");
-        $data[] = new Holiday("01.05." . $year, "Dag van de Arbeid", $timezone, NOTABLE);
+        $data[] = (new Holiday($easter, "Goede vrijdag", $timezone, Holiday::NOTABLE))->modify('-2 days');
+        $data[] = new Holiday($easter, "1ste paasdag", $timezone, Holiday::NOTABLE);
+        $data[] = (new Holiday($easter, "1ste pinksterdag", $timezone, Holiday::NOTABLE))->modify("+49 days");
+        $data[] = new Holiday("01.05." . $year, "Dag van de Arbeid", $timezone, Holiday::NOTABLE);
 
         if ($year % 5 > 0) {
-            $data[] = new Holiday("05.05." . $year, "Bevrijdingsdag", $timezone, NOTABLE);
+            $data[] = new Holiday("05.05." . $year, "Bevrijdingsdag", $timezone, Holiday::NOTABLE);
         }
 
-        $data[] = new Holiday("24.12." . $year, "Kerstavond", $timezone, NOTABLE, 0.5);
-        $data[] = new Holiday("31.12." . $year, "Oudejaarsavond", $timezone, NOTABLE, 0.5);
+        $data[] = new Holiday("24.12." . $year, "Kerstavond", $timezone, Holiday::NOTABLE, 0.5);
+        $data[] = new Holiday("31.12." . $year, "Oudejaarsavond", $timezone, Holiday::NOTABLE, 0.5);
 
         return $data;
     }

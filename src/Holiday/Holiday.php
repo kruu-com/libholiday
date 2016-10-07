@@ -14,10 +14,6 @@
  */
 namespace Holiday;
 
-const HOLIDAY        = "holiday";
-const SCHOOL_HOLIDAY = "school";
-const NOTABLE        = "notable";
-
 /**
  * Represents a holiday.
  *
@@ -27,6 +23,10 @@ const NOTABLE        = "notable";
  */
 class Holiday extends \DateTime
 {
+    const HOLIDAY        = "holiday";
+    const NOTABLE        = "notable";
+    const SCHOOL_HOLIDAY = "school";
+
     public $type;
     public $name;
     public $weight;
@@ -40,7 +40,7 @@ class Holiday extends \DateTime
      * @param int|string $type HOLIDAY, SCHOOL_HOLIDAY or SPECIAL
      * @param float $weight Positive float.
      */
-    public function __construct($time, $name, \DateTimeZone $timezone = null, $type = HOLIDAY, $weight = null)
+    public function __construct($time, $name, \DateTimeZone $timezone = null, $type = self::HOLIDAY, $weight = null)
     {
         if ($time instanceof \DateTime) {
             parent::__construct($time->format("Y-m-d"), $time->getTimeZone());
@@ -54,7 +54,7 @@ class Holiday extends \DateTime
 
         $this->weight = $weight;
         if (null === $weight) {
-            $this->weight = ($type === HOLIDAY) ? 1.0 : 0.0;
+            $this->weight = ($type === self::HOLIDAY) ? 1.0 : 0.0;
         }
 
         $this->type = $type;

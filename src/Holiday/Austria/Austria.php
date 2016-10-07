@@ -16,7 +16,6 @@ namespace Holiday\Austria;
 
 use Holiday\Calculator;
 use Holiday\Holiday;
-use const Holiday\NOTABLE;
 
 class Austria extends Calculator
 {
@@ -77,14 +76,14 @@ class Austria extends Calculator
         $data   = array();
         $easter = $this->getEaster($year);
 
-        $data[] = new Holiday($easter, "Karfreitag", $timezone, NOTABLE);
+        $data[] = new Holiday($easter, "Karfreitag", $timezone, Holiday::NOTABLE);
         $data[0]->modify("-2 days");
 
-        $data[] = new Holiday($easter, "Pfingstsonntag", $timezone, NOTABLE);
+        $data[] = new Holiday($easter, "Pfingstsonntag", $timezone, Holiday::NOTABLE);
         $data[1]->modify("+49 days");
 
-        $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, NOTABLE, 0.5);
-        $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, NOTABLE, 0.5);
+        $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, Holiday::NOTABLE, 0.5);
+        $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, Holiday::NOTABLE, 0.5);
 
         return $data;
     }

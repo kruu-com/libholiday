@@ -27,7 +27,6 @@ class AustriaTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(16, $austria->between($start, $end));
 
         $days = $austria->between($start, $end);
-        print_r($days);
 
         $this->assertEquals(
             new Holiday\Holiday("28.3.2016", "Ostermontag"),
