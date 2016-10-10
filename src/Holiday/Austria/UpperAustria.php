@@ -2,7 +2,6 @@
 namespace Holiday\Austria;
 
 use Holiday\Holiday;
-use const Holiday\NOTABLE;
 
 class UpperAustria extends Austria
 {
@@ -13,7 +12,7 @@ class UpperAustria extends Austria
         /** @var Holiday[] $data */
         $data   = parent::getSpecial($year);
 
-        $data[] = new Holiday("04.05."  . $year, "St. Florian", $timezone, NOTABLE);
+        $data[] = new Holiday("04.05."  . $year, "St. Florian", $timezone, Holiday::NOTABLE);
 
         return $data;
     }
