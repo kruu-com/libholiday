@@ -14,6 +14,8 @@
  */
 namespace Holiday\Germany;
 
+use Holiday\Holiday;
+
 class Hesse extends Germany
 {
     protected function getHolidays($year)
