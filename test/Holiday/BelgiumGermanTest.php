@@ -16,8 +16,9 @@ namespace Holiday\Test;
 use DateTimeZone;
 use Holiday;
 
-class AustriaTest extends \PHPUnit_Framework_TestCase
+class BelgiumGermanTest extends \PHPUnit_Framework_TestCase
 {
+
     /**
      * @var \DateTimeZone
      */
@@ -28,26 +29,17 @@ class AustriaTest extends \PHPUnit_Framework_TestCase
         $this->timezone = new DateTimeZone('UTC');
     }
 
-    public function testAustriaCalculations()
+    public function testBelgiumGermanCommunityDay()
     {
-        $start = new \DateTime("2016-01-01", $this->timezone);
-        $end   = new \DateTime("2016-12-31", $this->timezone);
-
-        $austria = new Holiday\Austria\Austria($this->timezone);
-        $this->assertCount(16, $austria->between($start, $end));
-
-        $days = $austria->between($start, $end);
-
-        $this->assertEquals(
-            new Holiday\Holiday("28.3.2016", "Ostermontag", $this->timezone),
-            $days[0]);
-
-        $holidays = $austria->between(
-            new \DateTime("2016-05-05", $this->timezone),
-            new \DateTime("2016-05-05", $this->timezone));
+        $utc      = new \DateTimeZone("UTC");
+        $by       = new Holiday\Belgium\German($utc);
+        $holidays = $by->between(
+            new \DateTime("2017-11-15", $utc),
+            new \DateTime("2017-11-15", $utc));
 
         $holiday = array_pop($holidays);
-        $this->assertEquals("Christi Himmelfahrt", $holiday->name);
-        $this->assertEquals("2016-05-05 00:00:00", $holiday->format("Y-m-d H:i:s"));
+        $this->assertEquals("Tag der Deutschen Gemeinschaft", $holiday->name);
+        $this->assertEquals("2017-11-15 00:00:00", $holiday->format("Y-m-d H:i:s"));
+        $this->assertEquals("UTC", $holiday->getTimeZone()->getName());
     }
 }
