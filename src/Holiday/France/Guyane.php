@@ -16,7 +16,7 @@ namespace Holiday\France;
 
 use Holiday\Holiday;
 
-class Guadeloupe extends France
+class Guyane extends France
 {
     protected function getSpecial($year)
     {
