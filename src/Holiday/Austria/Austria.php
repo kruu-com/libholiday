@@ -54,6 +54,8 @@ class Austria extends Calculator
         $data[1]->modify("+39 days");
         $data[] = new Holiday($easter, "Pfingstmontag", $timezone);
         $data[2]->modify("+50 days");
+        $data[] = new Holiday($easter, "Fronleichnam", $timezone);
+        $data[3]->modify("+60 days");
 
         $data[] = new Holiday("01.01." . $year, "Neujahrstag", $timezone);
         $data[] = new Holiday("06.01." . $year, "Heilige drei Könige", $timezone);
