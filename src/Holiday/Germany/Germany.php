@@ -62,6 +62,10 @@ class Germany extends Calculator
         $data[] = new Holiday("25.12." . $year, "1. Weihnachtsfeiertag", $timezone);
         $data[] = new Holiday("26.12." . $year, "2. Weihnachtsfeiertag", $timezone);
 
+        if($year == 2017) {
+            $data[] = new Holiday("31.10." . $year, "Reformationstag", $timezone);
+        }
+
         return $data;
     }
 
