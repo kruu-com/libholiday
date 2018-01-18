@@ -34,7 +34,7 @@ class AustriaTest extends \PHPUnit_Framework_TestCase
         $end   = new \DateTime("2016-12-31", $this->timezone);
 
         $austria = new Holiday\Austria\Austria($this->timezone);
-        $this->assertCount(16, $austria->between($start, $end));
+        $this->assertCount(17, $austria->between($start, $end));
 
         $days = $austria->between($start, $end);
 
