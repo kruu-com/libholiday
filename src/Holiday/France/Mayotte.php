@@ -22,7 +22,7 @@ class Mayotte extends France
     {
         $timezone = $this->timezone;
 
-        $data   = parent::getHolidays($year);
+        $data   = parent::getSpecial($year);
         $data[] = new Holiday("27.04." . $year, "Abschaffung der Sklaverei", $timezone);
 
         return $data;

@@ -23,7 +23,7 @@ class Guyane extends France
         $timezone = $this->timezone;
 
         $easter = $this->getEaster($year);
-        $data   = parent::getHolidays($year);
+        $data   = parent::getSpecial($year);
 
         $date = new Holiday($easter, "Karfreitag", $timezone);
         $date->modify("-2 days");
