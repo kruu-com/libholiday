@@ -14,6 +14,18 @@
  */
 namespace Holiday\Germany;
 
+use Holiday\Holiday;
+
 class LowerSaxony extends Germany
 {
+    protected function getHolidays($year)
+    {
+        $timezone = $this->timezone;
+
+        $data   = parent::getHolidays($year);
+
+        $data[] = new Holiday("31.10." . $year, "Reformationstag", $timezone);
+
+        return $data;
+    }
 }
