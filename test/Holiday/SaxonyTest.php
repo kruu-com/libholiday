@@ -19,7 +19,7 @@ class SaxonyTest extends \PHPUnit_Framework_TestCase
 {
     public function testDayOfRepentance2016() {
         $utc      = new \DateTimeZone("UTC");
-        $by       = new Holiday\Germany\Saxony($utc);
+        $by       = new Holiday\DE\SN($utc);
         $holidays = $by->between(
             new \DateTime("2016-11-16", $utc),
             new \DateTime("2016-11-16", $utc));
@@ -32,7 +32,7 @@ class SaxonyTest extends \PHPUnit_Framework_TestCase
 
     public function testDayOfRepentance2017() {
         $utc      = new \DateTimeZone("UTC");
-        $by       = new Holiday\Germany\Saxony($utc);
+        $by       = new Holiday\DE\SN($utc);
         $holidays = $by->between(
             new \DateTime("2017-11-22", $utc),
             new \DateTime("2017-11-22", $utc));

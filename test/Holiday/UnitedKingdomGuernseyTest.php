@@ -32,7 +32,7 @@ class UnitedKingdomGuernseyTest extends \PHPUnit_Framework_TestCase
     public function testUnitedKingdomGuernseyHoliday()
     {
         $utc      = new \DateTimeZone("UTC");
-        $by       = new Holiday\UnitedKingdom\Guernsey($utc);
+        $by       = new Holiday\GB\Guernsey($utc);
         $holidays = $by->between(
             new \DateTime("2017-05-09", $utc),
             new \DateTime("2017-05-09", $utc));
