@@ -25,10 +25,12 @@ class NL extends Calculator
         $timezone = $this->timezone;
 
         $data   = array();
-        $easter = $this->getEaster($year);
-        $data[] = (new Holiday($easter, "2de paasdag", $timezone))->modify("+1 day");
-        $data[] = (new Holiday($easter, "Hemelvaartsdag", $timezone))->modify("+39 days");
-        $data[] = (new Holiday($easter, "2de pinksterdag", $timezone))->modify("+50 days");
+
+        $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
+
+        $data[] = new Holiday($easter->modify("+1 day"), "2de paasdag", $timezone);
+        $data[] = new Holiday($easter->modify("+39 days"), "Hemelvaartsdag", $timezone);
+        $data[] = new Holiday($easter->modify("+50 days"), "2de pinksterdag", $timezone);
         $data[] = new Holiday("01.01." . $year, "Nieuwjaarsdag", $timezone);
 
         if($year < 2014) {
@@ -56,11 +58,12 @@ class NL extends Calculator
         $timezone = $this->timezone;
 
         $data   = array();
-        $easter = $this->getEaster($year);
 
-        $data[] = (new Holiday($easter, "Goede vrijdag", $timezone, Holiday::NOTABLE))->modify('-2 days');
+        $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
+
+        $data[] = new Holiday($easter->modify('-2 days'), "Goede vrijdag", $timezone, Holiday::NOTABLE);
         $data[] = new Holiday($easter, "1ste paasdag", $timezone, Holiday::NOTABLE);
-        $data[] = (new Holiday($easter, "1ste pinksterdag", $timezone, Holiday::NOTABLE))->modify("+49 days");
+        $data[] = new Holiday($easter->modify("+49 days"), "1ste pinksterdag", $timezone, Holiday::NOTABLE);
         $data[] = new Holiday("01.05." . $year, "Dag van de Arbeid", $timezone, Holiday::NOTABLE);
 
         if ($year % 5 > 0) {

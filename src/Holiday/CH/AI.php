@@ -14,10 +14,10 @@ class AI extends CH
 
         $easter = new \DateTimeImmutable(parent::getEaster($year));
 
-        $data[] = new Holiday($easter->modify("-2 days"), "Karfreitag", $timezone);
-        $data[] = new Holiday($easter->modify("+1 day"), "Ostermontag", $timezone);
-        $data[] = new Holiday($easter->modify("+50 days"), "Pfingstmontag", $timezone);
-        $data[] = new Holiday($easter->modify("+60 days"), "Fronleichnam", $timezone);
+        $data[] = new Holiday($easter->modify("-2 days")->format('d.m.Y'), "Karfreitag", $timezone);
+        $data[] = new Holiday($easter->modify("+1 day")->format('d.m.Y'), "Ostermontag", $timezone);
+        $data[] = new Holiday($easter->modify("+50 days")->format('d.m.Y'), "Pfingstmontag", $timezone);
+        $data[] = new Holiday($easter->modify("+60 days")->format('d.m.Y'), "Fronleichnam", $timezone);
 
         $data[] = new Holiday('15.08.' . $year, "Mariä Himmelfahrt", $timezone);
         $date = new \DateTimeImmutable('Third Sunday of September ' . $year);

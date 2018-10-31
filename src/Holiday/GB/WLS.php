@@ -22,16 +22,16 @@ class WLS extends GB
     {
         $timezone = $this->timezone;
 
-        $easter = $this->getEaster($year);
         $data   = parent::getHolidays($year);
+
+        $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
 
         $date = new Holiday("01.01." . $year, "Neujahrstag", $timezone);
         if( parent::checkForWeekend( $date ) ) {
             $date = new Holiday(new \DateTime('first Monday of January '.$year, $timezone), "Neujahrstag", $timezone);
         }
         $data[] = $date;
-        $data[] = new Holiday($easter, "Ostermontag", $timezone);
-        $data[0]->modify("+1 day");
+        $data[] = new Holiday($easter->modify("+1 day"), "Ostermontag", $timezone);
         $data[] = new Holiday("last Monday of August " . $year, "August Bank Holiday", $timezone);
 
         return $data;

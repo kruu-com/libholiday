@@ -11,7 +11,7 @@ class AT4 extends AT
         $timezone = $this->timezone;
 
         /** @var Holiday[] $data */
-        $data   = parent::getSpecial($year);
+        $data   = parent::getHolidays($year);
 
         $data[] = new Holiday("04.05."  . $year, "St. Florian", $timezone, Holiday::NOTABLE);
 

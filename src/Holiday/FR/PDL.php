@@ -12,26 +12,17 @@
  * @copyright  Copyright (c) 2012 Mayflower GmbH (http://www.mayflower.de)
  * @license    LGPL v3 (See LICENSE file)
  */
-namespace Holiday\GB;
+namespace Holiday\FR;
 
 use Holiday\Holiday;
 
-class Alderney extends GB
+class PDL extends FR
 {
     protected function getHolidays($year)
     {
         $timezone = $this->timezone;
 
-        $easter = $this->getEaster($year);
         $data   = parent::getHolidays($year);
-
-        $date = new Holiday("01.01." . $year, "Neujahrstag", $timezone);
-        $data[] = $date;
-        $date = new Holiday($easter, "Ostermontag", $timezone);
-        $date->modify("+1 day");
-        $data[] = $date;
-        $date = new Holiday("15.12." . $year, "Homecoming Day", $timezone);
-        $data[] = $date;
 
         return $data;
     }

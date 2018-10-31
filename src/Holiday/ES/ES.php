@@ -46,7 +46,6 @@ class ES extends Calculator
 
         /** @var Holiday[] $data */
         $data = array();
-        $easter = $this->getEaster($year);
 
         $data[] = new Holiday("01.01." . $year, "Neujahrstag", $timezone);
         $data[] = new Holiday("06.01." . $year, "Heilige drei Könige", $timezone);
@@ -66,11 +65,11 @@ class ES extends Calculator
 
         /** @var Holiday[] $data */
         $data   = array();
-        $easter = new \DateTimeImmutable($this->getEaster($year));
+        $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
 
-        $data[] = new Holiday($easter->modify("-2 days"), "Karfreitag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter->modify("-2 days")->format('d.m.Y'), "Karfreitag", $timezone, Holiday::NOTABLE);
         $data[] = new Holiday($easter, "Ostersonntag", $timezone, Holiday::NOTABLE);
-        $data[] = new Holiday($easter->modify("+49 days"), "Pfingstsonntag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter->modify("+49 days")->format('d.m.Y'), "Pfingstsonntag", $timezone, Holiday::NOTABLE);
 
         return $data;
     }

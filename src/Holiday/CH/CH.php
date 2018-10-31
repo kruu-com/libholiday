@@ -47,10 +47,10 @@ class CH extends Calculator
         /** @var Holiday[] $data */
         $data = array();
 
-        $easter = new \DateTimeImmutable($this->getEaster($year));
+        $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
 
         $data[] = new Holiday("01.01." . $year, "Neujahrstag", $timezone);
-        $data[] = new Holiday($easter->modify("+39 days"), "Auffahrt", $timezone);
+        $data[] = new Holiday($easter->modify("+39 days")->format('d.m.Y'), "Auffahrt", $timezone);
         $data[] = new Holiday("01.08." . $year, "Schweizer Nationalfeiertag", $timezone);
         $data[] = new Holiday("25.12." . $year, "1. Weihnachtstag", $timezone);
 
@@ -64,8 +64,8 @@ class CH extends Calculator
         /** @var Holiday[] $data */
         $data   = array();
 
-        $easter = new \DateTimeImmutable($this->getEaster($year));
-        $data[] = new Holiday($easter->modify("+49 days"), "Pfingstsonntag", $timezone);
+        $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
+        $data[] = new Holiday($easter->modify("+49 days")->format('d.m.Y'), "Pfingstsonntag", $timezone);
 
         return $data;
     }

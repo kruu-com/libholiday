@@ -22,10 +22,11 @@ class GES extends FR
     {
         $timezone = $this->timezone;
 
-        $easter = $this->getEaster($year);
         $data   = parent::getHolidays($year);
-        $data[] = new Holiday($easter, "Karfreitag", $timezone);
-        $data[0]->modify("-2 days");
+
+        $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
+
+        $data[] = new Holiday($easter->modify("-2 days")->format('d.m.Y'), "Karfreitag", $timezone);
         $data[] = new Holiday("26.12." . $year, "2. Weihnachtsfeiertag", $timezone);
 
         return $data;

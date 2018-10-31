@@ -12,24 +12,17 @@
  * @copyright  Copyright (c) 2012 Mayflower GmbH (http://www.mayflower.de)
  * @license    LGPL v3 (See LICENSE file)
  */
-namespace Holiday\DE;
+namespace Holiday\FR;
 
 use Holiday\Holiday;
 
-class BY extends DE
+class BFC extends FR
 {
     protected function getHolidays($year)
     {
         $timezone = $this->timezone;
 
         $data   = parent::getHolidays($year);
-
-        $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
-
-        $data[] = new Holiday("6.1." . $year, "Heilige Drei Könige", $timezone);
-        $data[] = new Holiday($easter->modify("+60 days")->format('d.m.Y'), "Fronleichnam", $timezone);
-        $data[] = new Holiday("15.8." . $year, "Mariä Himmelfahrt", $timezone);
-        $data[] = new Holiday("1.11." . $year, "Allerheiligen", $timezone);
 
         return $data;
     }

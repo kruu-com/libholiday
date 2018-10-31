@@ -16,7 +16,7 @@ namespace Holiday\Test;
 use DateTimeZone;
 use Holiday;
 
-class FranceTest extends \PHPUnit_Framework_TestCase
+class FranceNormandieTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -34,10 +34,10 @@ class FranceTest extends \PHPUnit_Framework_TestCase
         $start = new \DateTime("2012-01-01", $this->timezone);
         $end   = new \DateTime("2012-12-31", $this->timezone);
 
-        $France = new Holiday\FR\FR($this->timezone);
+        $France = new Holiday\FR\NOR($this->timezone);
 
+        $this->assertCount(15, $France->between($start, $end));
         $days = $France->between($start, $end);
-        $this->assertCount(15, $days);
         $this->assertEquals(
             new Holiday\Holiday("9.4.2012", "Ostermontag", $this->timezone),
             $days[0]);
@@ -48,7 +48,7 @@ class FranceTest extends \PHPUnit_Framework_TestCase
 
     public function testFranceBetween()
     {
-        $France = new Holiday\FR\FR($this->timezone);
+        $France = new Holiday\FR\NOR($this->timezone);
         $res = $France->between(
                 new \DateTime("1.4.2012", $this->timezone),
                 new \DateTime("30.4.2012", $this->timezone));
@@ -84,7 +84,7 @@ class FranceTest extends \PHPUnit_Framework_TestCase
 
     public function testFrancePST() {
         $timezone = new \DateTimeZone("PST");
-        $France = new Holiday\FR\FR($timezone);
+        $France = new Holiday\FR\NOR($timezone);
         $res = $France->between(
                 new \DateTime("1.5.2012", $timezone),
                 new \DateTime("2.5.2012", $timezone));
@@ -94,24 +94,11 @@ class FranceTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testWeights() {
-        $France       = new Holiday\FR\FR($this->timezone);
+        $France       = new Holiday\FR\NOR($this->timezone);
         $holidays = $France->between(
             new \DateTime("2012-12-24", $this->timezone),
             new \DateTime("2012-12-24", $this->timezone));
         $holiday  = array_pop($holidays);
         $this->assertEquals(0.5, $holiday->weight, 'Heilig Abend weight', 0.001);
-    }
-
-    public function testBug() {
-        $France      = new Holiday\FR\GES($this->timezone);
-        $fail    = $France->between(
-            new \DateTime("2011-06-01", $this->timezone),
-            new \DateTime("2012-05-01", $this->timezone));
-        $correct = $France->between(
-            new \DateTime("2011-05-02", $this->timezone),
-            new \DateTime("2012-05-01", $this->timezone));
-        $this->assertNotEquals(12, count($fail));
-        $this->assertNotEquals(12, count($correct));
-        $this->assertEquals(16, count($fail));
     }
 }

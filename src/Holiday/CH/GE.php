@@ -14,9 +14,9 @@ class GE extends CH
 
         $easter = new \DateTimeImmutable(parent::getEaster($year));
 
-        $data[] = new Holiday($easter->modify("-2 days"), "Karfreitag", $timezone);
-        $data[] = new Holiday($easter->modify("+1 day"), "Ostermontag", $timezone);
-        $data[] = new Holiday($easter->modify("+50 days"), "Pfingstmontag", $timezone);
+        $data[] = new Holiday($easter->modify("-2 days")->format('d.m.Y'), "Karfreitag", $timezone);
+        $data[] = new Holiday($easter->modify("+1 day")->format('d.m.Y'), "Ostermontag", $timezone);
+        $data[] = new Holiday($easter->modify("+50 days")->format('d.m.Y'), "Pfingstmontag", $timezone);
 
         $genevanFast = new \DateTimeImmutable('First Sunday of September '.$year);
         $data[] = new Holiday($genevanFast->modify('+4 days'), "Jeûne genevois", $timezone);

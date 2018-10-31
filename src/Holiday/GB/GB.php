@@ -46,9 +46,8 @@ class GB extends Calculator
 
         /** @var Holiday[] $data */
         $data = array();
-        $easter = $this->getEaster($year);
-        $data[] = new Holiday($easter, "Karfreitag", $timezone);
-        $data[0]->modify("-2 days");
+        $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
+        $data[] = new Holiday($easter->modify("-2 days")->format('d.m.Y'), "Karfreitag", $timezone);
         $data[] = new Holiday("first Monday of May " . $year, "Early May Bank Holiday", $timezone);
         $data[] = new Holiday("last Monday of May " . $year, "Spring Bank Holiday", $timezone);
         $date = new Holiday("25.12." . $year, "1. Weihnachtsfeiertag", $timezone);
