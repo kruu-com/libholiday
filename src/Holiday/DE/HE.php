@@ -22,12 +22,11 @@ class HE extends DE
     {
         $timezone = $this->timezone;
 
-        $easter = $this->getEaster($year);
         $data   = parent::getHolidays($year);
 
-        $date   = new Holiday($easter, "Fronleichnam", $timezone);
-        $date->modify("+60 days");
-        $data[] = $date;
+        $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
+
+        $data[] = new Holiday($easter->modify("+60 days")->format('d.m.Y'), "Fronleichnam", $timezone);
 
         return $data;
     }
