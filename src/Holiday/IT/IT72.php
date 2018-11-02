@@ -4,7 +4,7 @@ namespace Holiday\IT;
 
 use Holiday\Holiday;
 
-class IT34 extends IT
+class IT72 extends IT
 {
     protected function getHolidays($year)
     {
@@ -12,7 +12,7 @@ class IT34 extends IT
 
         $easter = parent::getEaster($year);
 
-        $data[] = new Holiday("25.04." . $year, "St. Markus", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday("19.09." . $year, "St. Gennaro", $timezone, Holiday::NOTABLE);
 
         return $data;
     }
