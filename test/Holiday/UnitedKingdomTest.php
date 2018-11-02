@@ -115,7 +115,7 @@ class UnitedKingdomTest extends \PHPUnit_Framework_TestCase
 
     public function testBug() {
         $timezone = new \DateTimeZone('UTC');
-        $UnitedKingdom      = new Holiday\GB\Alderney($timezone);
+        $UnitedKingdom      = new Holiday\GB\SCT($timezone);
         $fail    = $UnitedKingdom->between(
             new \DateTime("2011-06-01", $timezone),
             new \DateTime("2012-05-01", $timezone));

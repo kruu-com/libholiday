@@ -14,6 +14,8 @@ class VC extends ES
 
         $easter = new \DateTimeImmutable(parent::getEaster($year));
 
+        $data[] = new Holiday("09.10." . $year, "Valencia-Tag", $timezone);
+
         return $data;
     }
 }

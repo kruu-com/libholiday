@@ -14,6 +14,8 @@ class NC extends ES
 
         $easter = new \DateTimeImmutable(parent::getEaster($year));
 
+        $data[] = new Holiday("03.12." . $year, "Navarra-Tag", $timezone);
+
         return $data;
     }
 }

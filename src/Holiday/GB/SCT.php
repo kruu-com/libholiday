@@ -26,15 +26,15 @@ class SCT extends GB
 
         $date = new Holiday("01.01." . $year, "Neujahrstag", $timezone);
         if( parent::checkForWeekend( $date ) ) {
-            $date = new Holiday(new \DateTime('first Tuesday of January '.$year, $timezone), "Neujahrstag", $timezone);
+            $date = new Holiday(new \DateTime('First Tuesday of January '.$year, $timezone), "Neujahrstag", $timezone);
         }
         $data[] = $date;
         $date = new Holiday("02.01." . $year, "Neujahrstag", $timezone);
         if( parent::checkForWeekend( $date ) ) {
-            $date = new Holiday(new \DateTime('first Monday of January '.$year, $timezone), "Neujahrstag", $timezone);
+            $date = new Holiday(new \DateTime('First Monday of January '.$year, $timezone), "Neujahrstag", $timezone);
         }
         $data[] = $date;
-        $data[] = new Holiday("first Monday in August " . $year, "August Bank Holiday", $timezone);
+        $data[] = new Holiday(new \DateTime('First Monday of August ' . $year, $timezone), "August Bank Holiday", $timezone);
 
         return $data;
     }

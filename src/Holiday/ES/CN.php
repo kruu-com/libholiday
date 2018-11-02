@@ -12,9 +12,8 @@ class CN extends ES
 
         $data   = parent::getHolidays($year);
 
-        $easter = new \DateTimeImmutable(parent::getEaster($year));
-
         $data[] = new Holiday("30.05." . $year, "Tag der Kanaren", $timezone);
+        $data[] = new Holiday("31.05." . $year, "Tag der Kanaren", $timezone, Holiday::NOTABLE);
 
         return $data;
     }

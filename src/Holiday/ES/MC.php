@@ -14,6 +14,8 @@ class MC extends ES
 
         $easter = new \DateTimeImmutable(parent::getEaster($year));
 
+        $data[] = new Holiday("09.06." . $year, "Murcia-Tag", $timezone);
+
         return $data;
     }
 }

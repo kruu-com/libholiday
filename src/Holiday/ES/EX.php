@@ -14,6 +14,8 @@ class EX extends ES
 
         $easter = new \DateTimeImmutable(parent::getEaster($year));
 
+        $data[] = new Holiday("08.09." . $year, "Extramadura-Tag", $timezone);
+
         return $data;
     }
 }

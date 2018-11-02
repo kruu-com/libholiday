@@ -37,7 +37,7 @@ class FranceTest extends \PHPUnit_Framework_TestCase
         $France = new Holiday\FR\FR($this->timezone);
 
         $days = $France->between($start, $end);
-        $this->assertCount(15, $days);
+        $this->assertCount(16, $days);
         $this->assertEquals(
             new Holiday\Holiday("9.4.2012", "Ostermontag", $this->timezone),
             $days[0]);
@@ -69,7 +69,7 @@ class FranceTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $mapped);
 
-        $this->assertCount(16, $France->between(
+        $this->assertCount(17, $France->between(
             new \DateTime("1.5.2012", $this->timezone),
             new \DateTime("1.5.2013", $this->timezone)));
 
@@ -112,6 +112,6 @@ class FranceTest extends \PHPUnit_Framework_TestCase
             new \DateTime("2012-05-01", $this->timezone));
         $this->assertNotEquals(12, count($fail));
         $this->assertNotEquals(12, count($correct));
-        $this->assertEquals(16, count($fail));
+        $this->assertEquals(17, count($fail));
     }
 }

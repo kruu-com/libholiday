@@ -14,6 +14,8 @@ class RI extends ES
 
         $easter = new \DateTimeImmutable(parent::getEaster($year));
 
+        $data[] = new Holiday("09.06." . $year, "La Rioja-Tag", $timezone);
+
         return $data;
     }
 }

@@ -14,6 +14,8 @@ class ESAS extends ES
 
         $easter = new \DateTimeImmutable(parent::getEaster($year));
 
+        $data[] = new Holiday("08.09." . $year, "Asturien-Tag", $timezone);
+
         return $data;
     }
 }

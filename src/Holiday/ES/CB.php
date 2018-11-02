@@ -14,6 +14,10 @@ class CB extends ES
 
         $easter = new \DateTimeImmutable(parent::getEaster($year));
 
+        $data[] = new Holiday("28.07." . $year, "Tag der Institutionen", $timezone);
+        $data[] = new Holiday("12.08." . $year, "Kantabrien-Tag", $timezone);
+        $data[] = new Holiday("15.09." . $year, "Nuestra Senora de la Bien Aparecida", $timezone);
+
         return $data;
     }
 }

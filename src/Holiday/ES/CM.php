@@ -14,7 +14,7 @@ class CM extends ES
 
         $easter = new \DateTimeImmutable(parent::getEaster($year));
 
-        $data[] = new Holiday("23.04." . $year, "Tag von Kastilien und Leon", $timezone);
+        $data[] = new Holiday("31.05." . $year, "Tag von Kastilien-La Mancha", $timezone);
 
         return $data;
     }
