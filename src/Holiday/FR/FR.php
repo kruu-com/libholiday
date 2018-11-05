@@ -54,11 +54,10 @@ class FR extends Calculator
 
         $data[] = new Holiday("01.01." . $year, "Neujahrstag", $timezone);
         $data[] = new Holiday("01.05." . $year, "Tag der Arbeit", $timezone);
-        $data[] = new Holiday("08.05." . $year, "La fête de la  Victoire", $timezone);
+        $data[] = new Holiday("08.05." . $year, "La fête de la Victoire", $timezone);
         $data[] = new Holiday("14.07." . $year, "Bastille day", $timezone);
         $data[] = new Holiday("15.08." . $year, "Mariä Himmelfahrt", $timezone);
         $data[] = new Holiday("01.11." . $year, "Allerheiligen", $timezone);
-        $data[] = new Holiday("11.11." . $year, "Tag des Waffenstillstands", $timezone);
         $data[] = new Holiday("11.11." . $year, "Tag des Waffenstillstands", $timezone);
         $data[] = new Holiday("25.12." . $year, "Weihnachten", $timezone);
 
