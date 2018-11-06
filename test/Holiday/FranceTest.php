@@ -34,7 +34,7 @@ class FranceTest extends \PHPUnit_Framework_TestCase
         $start = new \DateTime("2012-01-01", $this->timezone);
         $end   = new \DateTime("2012-12-31", $this->timezone);
 
-        $France = new Holiday\FR\FR($this->timezone);
+        $France = new Holiday\Fr\Fr($this->timezone);
 
         $days = $France->between($start, $end);
         $this->assertCount(15, $days);
@@ -48,7 +48,7 @@ class FranceTest extends \PHPUnit_Framework_TestCase
 
     public function testFranceBetween()
     {
-        $France = new Holiday\FR\FR($this->timezone);
+        $France = new Holiday\Fr\Fr($this->timezone);
         $res = $France->between(
                 new \DateTime("1.4.2012", $this->timezone),
                 new \DateTime("30.4.2012", $this->timezone));
@@ -84,7 +84,7 @@ class FranceTest extends \PHPUnit_Framework_TestCase
 
     public function testFrancePST() {
         $timezone = new \DateTimeZone("PST");
-        $France = new Holiday\FR\FR($timezone);
+        $France = new Holiday\Fr\Fr($timezone);
         $res = $France->between(
                 new \DateTime("1.5.2012", $timezone),
                 new \DateTime("2.5.2012", $timezone));
@@ -94,7 +94,7 @@ class FranceTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testWeights() {
-        $France       = new Holiday\FR\FR($this->timezone);
+        $France       = new Holiday\Fr\Fr($this->timezone);
         $holidays = $France->between(
             new \DateTime("2012-12-24", $this->timezone),
             new \DateTime("2012-12-24", $this->timezone));
@@ -103,7 +103,7 @@ class FranceTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testBug() {
-        $France      = new Holiday\FR\GES($this->timezone);
+        $France      = new Holiday\Fr\FrGes($this->timezone);
         $fail    = $France->between(
             new \DateTime("2011-06-01", $this->timezone),
             new \DateTime("2012-05-01", $this->timezone));

@@ -34,7 +34,7 @@ class UnitedKingdomTest extends \PHPUnit_Framework_TestCase
         $start = new \DateTime("2012-01-01", $this->timezone);
         $end   = new \DateTime("2012-12-31", $this->timezone);
 
-        $UnitedKingdom = new Holiday\GB\GB($this->timezone);
+        $UnitedKingdom = new Holiday\Gb\Gb($this->timezone);
 
         $this->assertCount(7, $UnitedKingdom->between($start, $end));
 
@@ -49,7 +49,7 @@ class UnitedKingdomTest extends \PHPUnit_Framework_TestCase
 
     public function testUnitedKingdomBetween()
     {
-        $UnitedKingdom = new Holiday\GB\GB($this->timezone);
+        $UnitedKingdom = new Holiday\Gb\Gb($this->timezone);
         $res = $UnitedKingdom->between(
                 new \DateTime("1.4.2012", $this->timezone),
                 new \DateTime("30.4.2012", $this->timezone));
@@ -84,7 +84,7 @@ class UnitedKingdomTest extends \PHPUnit_Framework_TestCase
 
     public function testUnitedKingdomPST() {
         $timezone = new \DateTimeZone("PST");
-        $UnitedKingdom = new Holiday\GB\GB($timezone);
+        $UnitedKingdom = new Holiday\Gb\Gb($timezone);
         $res = $UnitedKingdom->between(
             new \DateTime("27.5.2013", $timezone),
             new \DateTime("27.5.2013", $timezone));
@@ -95,7 +95,7 @@ class UnitedKingdomTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testWeights() {
-        $UnitedKingdom       = new Holiday\GB\GB($this->timezone);
+        $UnitedKingdom       = new Holiday\Gb\Gb($this->timezone);
         $holidays = $UnitedKingdom->between(
             new \DateTime("2012-12-24", $this->timezone),
             new \DateTime("2012-12-24", $this->timezone));
@@ -104,7 +104,7 @@ class UnitedKingdomTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testHolidayDisplacement() {
-        $UnitedKingdom = new Holiday\GB\GB($this->timezone);
+        $UnitedKingdom = new Holiday\Gb\Gb($this->timezone);
         $this->assertCount(0, $UnitedKingdom->between(
             new \DateTime("2015-12-26", $this->timezone),
             new \DateTime("2015-12-26", $this->timezone)));
@@ -115,7 +115,7 @@ class UnitedKingdomTest extends \PHPUnit_Framework_TestCase
 
     public function testBug() {
         $timezone = new \DateTimeZone('UTC');
-        $UnitedKingdom      = new Holiday\GB\SCT($timezone);
+        $UnitedKingdom      = new Holiday\Gb\GbSct($timezone);
         $fail    = $UnitedKingdom->between(
             new \DateTime("2011-06-01", $timezone),
             new \DateTime("2012-05-01", $timezone));

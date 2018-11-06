@@ -34,7 +34,7 @@ class DenmarkTest extends \PHPUnit_Framework_TestCase
         $start = new \DateTime("2012-01-01", $this->timezone);
         $end   = new \DateTime("2012-12-31", $this->timezone);
 
-        $Denmark = new Holiday\DK\DK($this->timezone);
+        $Denmark = new Holiday\Dk\Dk($this->timezone);
 
         $this->assertCount(11, $Denmark->between($start, $end));
         $days = $Denmark->between($start, $end);
@@ -49,7 +49,7 @@ class DenmarkTest extends \PHPUnit_Framework_TestCase
 
     public function testDenmarkBetween()
     {
-        $Denmark = new Holiday\DK\DK($this->timezone);
+        $Denmark = new Holiday\Dk\Dk($this->timezone);
         $res = $Denmark->between(
                 new \DateTime("1.4.2012", $this->timezone),
                 new \DateTime("30.4.2012", $this->timezone));
@@ -86,7 +86,7 @@ class DenmarkTest extends \PHPUnit_Framework_TestCase
 
     public function testDenmarkPST() {
         $timezone = new \DateTimeZone("PST");
-        $Denmark = new Holiday\DK\DK($timezone);
+        $Denmark = new Holiday\Dk\Dk($timezone);
         $res = $Denmark->between(
                 new \DateTime("4.4.2012", $timezone),
                 new \DateTime("5.4.2012", $timezone));
@@ -96,7 +96,7 @@ class DenmarkTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testBug() {
-        $Denmark      = new Holiday\DK\DK($this->timezone);
+        $Denmark      = new Holiday\Dk\Dk($this->timezone);
         $fail    = $Denmark->between(
             new \DateTime("2011-06-01", $this->timezone),
             new \DateTime("2012-05-01", $this->timezone));

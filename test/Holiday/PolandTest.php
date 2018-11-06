@@ -34,7 +34,7 @@ class PolandTest extends \PHPUnit_Framework_TestCase
         $start = new \DateTime("2012-01-01", $this->timezone);
         $end   = new \DateTime("2012-12-31", $this->timezone);
 
-        $Poland = new Holiday\PL\PL($this->timezone);
+        $Poland = new Holiday\Pl\Pl($this->timezone);
 
         $this->assertCount(15, $Poland->between($start, $end));
         $days = $Poland->between($start, $end);
@@ -49,7 +49,7 @@ class PolandTest extends \PHPUnit_Framework_TestCase
 
     public function testPolandBetween()
     {
-        $Poland = new Holiday\PL\PL($this->timezone);
+        $Poland = new Holiday\Pl\Pl($this->timezone);
         $res = $Poland->between(
                 new \DateTime("1.4.2012", $this->timezone),
                 new \DateTime("30.4.2012", $this->timezone));
@@ -84,7 +84,7 @@ class PolandTest extends \PHPUnit_Framework_TestCase
 
     public function testPolandPST() {
         $timezone = new \DateTimeZone("PST");
-        $Poland = new Holiday\PL\PL($timezone);
+        $Poland = new Holiday\Pl\Pl($timezone);
         $res = $Poland->between(
                 new \DateTime("1.5.2012", $timezone),
                 new \DateTime("2.5.2012", $timezone));
@@ -94,7 +94,7 @@ class PolandTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testBug() {
-        $Poland      = new Holiday\PL\PL($this->timezone);
+        $Poland      = new Holiday\Pl\Pl($this->timezone);
         $fail    = $Poland->between(
             new \DateTime("2011-06-01", $this->timezone),
             new \DateTime("2012-05-01", $this->timezone));

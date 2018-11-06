@@ -24,8 +24,9 @@ namespace Holiday;
 class Holiday extends \DateTime
 {
     const HOLIDAY        = "holiday";
-    const NOTABLE        = "notable";
+    const PARTIAL        = "partial";
     const SCHOOL_HOLIDAY = "school";
+    const SUB_REGIONAL   = "subregional";
 
     public $type;
     public $name;

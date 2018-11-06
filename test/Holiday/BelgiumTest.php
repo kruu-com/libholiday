@@ -34,7 +34,7 @@ class BelgiumTest extends \PHPUnit_Framework_TestCase
         $start = new \DateTime("2012-01-01", $this->timezone);
         $end   = new \DateTime("2012-12-31", $this->timezone);
 
-        $Belgium = new Holiday\BE\BE($this->timezone);
+        $Belgium = new Holiday\Be\Be($this->timezone);
 
         $this->assertCount(14, $Belgium->between($start, $end));
         $days = $Belgium->between($start, $end);
@@ -48,7 +48,7 @@ class BelgiumTest extends \PHPUnit_Framework_TestCase
 
     public function testBelgiumBetween()
     {
-        $Belgium = new Holiday\BE\BE($this->timezone);
+        $Belgium = new Holiday\Be\Be($this->timezone);
         $res = $Belgium->between(
                 new \DateTime("1.4.2012", $this->timezone),
                 new \DateTime("30.5.2012", $this->timezone));
@@ -87,7 +87,7 @@ class BelgiumTest extends \PHPUnit_Framework_TestCase
 
     public function testBelgiumPST() {
         $timezone = new \DateTimeZone("PST");
-        $Belgium = new Holiday\BE\BE($timezone);
+        $Belgium = new Holiday\Be\Be($timezone);
         $res = $Belgium->between(
                 new \DateTime("1.5.2012", $timezone),
                 new \DateTime("2.5.2012", $timezone));
@@ -97,7 +97,7 @@ class BelgiumTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testWeights() {
-        $Belgium       = new Holiday\BE\BE($this->timezone);
+        $Belgium       = new Holiday\Be\Be($this->timezone);
         $holidays = $Belgium->between(
             new \DateTime("2012-12-24", $this->timezone),
             new \DateTime("2012-12-24", $this->timezone));
@@ -106,7 +106,7 @@ class BelgiumTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testBug() {
-        $Belgium      = new Holiday\BE\VLG($this->timezone);
+        $Belgium      = new Holiday\Be\BeVlg($this->timezone);
         $fail    = $Belgium->between(
             new \DateTime("2011-06-01", $this->timezone),
             new \DateTime("2012-05-01", $this->timezone));

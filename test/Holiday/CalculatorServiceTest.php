@@ -47,10 +47,10 @@ class CalculatorServiceTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->countryAT = 'AT';
+        $this->countryAT = 'At';
         $this->stateAT = 1;
 
-        $this->countryDE = 'DE';
+        $this->countryDE = 'De';
         $this->stateDE = 'BY';
 
         $this->calculatorService = new CalculatorService();
@@ -58,16 +58,16 @@ class CalculatorServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testCalculatorServiceForCountryAndStateCombinedCanBeLoaded() {
         $fixture = $this->calculatorService->getCalculatorByCountryAndState($this->countryAT, $this->stateAT);
-        $this->assertInstanceOf(Holiday\AT\AT1::class, $fixture);
+        $this->assertInstanceOf(Holiday\At\At1::class, $fixture);
     }
 
     public function testCalculatorServiceForCountryCanBeLoaded() {
         $fixture = $this->calculatorService->getCalculatorByCountryAndState($this->countryAT);
-        $this->assertInstanceOf(Holiday\AT\AT::class, $fixture);
+        $this->assertInstanceOf(Holiday\At\At::class, $fixture);
     }
 
     public function testCalculatorServiceForCountryAndStateCanBeLoaded() {
         $fixture = $this->calculatorService->getCalculatorByCountryAndState($this->countryDE, $this->stateDE);
-        $this->assertInstanceOf(Holiday\DE\BY::class, $fixture);
+        $this->assertInstanceOf(Holiday\De\DeBy::class, $fixture);
     }
 }

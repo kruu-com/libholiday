@@ -30,7 +30,7 @@ class BavariaTest extends \PHPUnit_Framework_TestCase
 
     public function testEasterBug() {
         $utc      = new \DateTimeZone("UTC");
-        $by       = new Holiday\DE\BY($utc);
+        $by       = new Holiday\De\DeBy($utc);
         $holidays = $by->between(
             new \DateTime("2012-04-09", $utc),
             new \DateTime("2012-04-09", $utc));
@@ -42,7 +42,7 @@ class BavariaTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testBug() {
-        $de      = new Holiday\DE\BY($this->timezone);
+        $de      = new Holiday\De\DeBy($this->timezone);
         $fail    = $de->between(
             new \DateTime("2011-06-01", $this->timezone),
             new \DateTime("2012-05-01", $this->timezone));

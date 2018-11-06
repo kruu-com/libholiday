@@ -34,7 +34,7 @@ class FranceNormandieTest extends \PHPUnit_Framework_TestCase
         $start = new \DateTime("2012-01-01", $this->timezone);
         $end   = new \DateTime("2012-12-31", $this->timezone);
 
-        $France = new Holiday\FR\NOR($this->timezone);
+        $France = new Holiday\Fr\FrNor($this->timezone);
 
         $this->assertCount(15, $France->between($start, $end));
         $days = $France->between($start, $end);
@@ -48,7 +48,7 @@ class FranceNormandieTest extends \PHPUnit_Framework_TestCase
 
     public function testFranceBetween()
     {
-        $France = new Holiday\FR\NOR($this->timezone);
+        $France = new Holiday\Fr\FrNor($this->timezone);
         $res = $France->between(
                 new \DateTime("1.4.2012", $this->timezone),
                 new \DateTime("30.4.2012", $this->timezone));
@@ -84,7 +84,7 @@ class FranceNormandieTest extends \PHPUnit_Framework_TestCase
 
     public function testFrancePST() {
         $timezone = new \DateTimeZone("PST");
-        $France = new Holiday\FR\NOR($timezone);
+        $France = new Holiday\Fr\FrNor($timezone);
         $res = $France->between(
                 new \DateTime("1.5.2012", $timezone),
                 new \DateTime("2.5.2012", $timezone));
@@ -94,7 +94,7 @@ class FranceNormandieTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testWeights() {
-        $France       = new Holiday\FR\NOR($this->timezone);
+        $France       = new Holiday\Fr\FrNor($this->timezone);
         $holidays = $France->between(
             new \DateTime("2012-12-24", $this->timezone),
             new \DateTime("2012-12-24", $this->timezone));

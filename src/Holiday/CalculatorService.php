@@ -6,26 +6,28 @@ use Holiday\Exception\CalculatorException;
 
 class CalculatorService
 {
-    public function getCalculatorByCountryAndState($country, $state = null): Calculator
+    public function getCalculatorByCountryAndState(string $country, string $state = null): Calculator
     {
-        if (null === $country) {
-            throw new CalculatorException('Country is missing');
+        $country = ucfirst(strtolower($country));
+        $state = ucfirst(strtolower($state));
+
+        if (null === $state) {
+            $className = sprintf('Holiday\\%s\\%s', $country, $country);
+        } else {
+            $className = sprintf('Holiday\\%s\\%s%s', $country, $country, $state);
         }
 
-        switch (true) {
-            case class_exists(sprintf('Holiday\\%s\\%s%s', $country, $country, $state)):
-                $className = sprintf('Holiday\\%s\\%s%s', $country, $country, $state);
-                return new $className();
-                break;
-            case class_exists(sprintf('Holiday\\%s\\%s', $country, $state)):
-                $className = sprintf('Holiday\\%s\\%s', $country, $state);
-                return new $className();
-                break;
-            case class_exists(sprintf('Holiday\\%s\\%s', $country, $country)):
-            default:
-                $className = sprintf('Holiday\\%s\\%s', $country, $country);
-                return new $className();
-                break;
+        if (class_exists($className)) {
+            return new $className();
         }
+
+        throw new CalculatorException('Country not available');
+    }
+
+    public function isHoliday(\DateTime $date, string $country, string $state = null)
+    {
+        $calculator = $this->getCalculatorByCountryAndState($country, $state);
+
+        return $calculator->isHoliday($date);
     }
 }

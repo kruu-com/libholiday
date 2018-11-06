@@ -29,13 +29,13 @@ class Sweden extends Calculator
 
         $easter = $this->getEaster($year);
 
-        $data[] = (new Holiday($easter, "Skärtorsdagen", $timezone, Holiday::NOTABLE, 0.5))->modify("-3 days");
+        $data[] = (new Holiday($easter, "Skärtorsdagen", $timezone, Holiday::PARTIAL, 0.5))->modify("-3 days");
         $data[] = (new Holiday($easter, "Långfredagen", $timezone))->modify("-2 days");
         $data[] = (new Holiday($easter, "Påskafton", $timezone))->modify("-1 days");
         $data[] = new Holiday($easter, "Påskdagen", $timezone);
         $data[] = (new Holiday($easter, "Annandag påsk", $timezone))->modify("+1 day");
 
-        $data[] = new Holiday("30.04." . $year, "Valborgsmässoafton", $timezone, Holiday::NOTABLE, 0.5);
+        $data[] = new Holiday("30.04." . $year, "Valborgsmässoafton", $timezone, Holiday::PARTIAL, 0.5);
         $data[] = new Holiday("01.05." . $year, "Första maj", $timezone);
 
 
@@ -53,7 +53,7 @@ class Sweden extends Calculator
 
 
         $allSaintsDay = $this->getAllSaintsDay($year, $timezone);
-        $data[] = (new Holiday($allSaintsDay, "Allhelgonaafton", $timezone, Holiday::NOTABLE, 0.5))->modify("-1 day");
+        $data[] = (new Holiday($allSaintsDay, "Allhelgonaafton", $timezone, Holiday::PARTIAL, 0.5))->modify("-1 day");
         $data[] = new Holiday($allSaintsDay, "Alla helgons dag", $timezone);
 
 

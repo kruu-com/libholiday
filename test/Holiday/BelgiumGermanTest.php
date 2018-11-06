@@ -32,7 +32,7 @@ class BelgiumGermanTest extends \PHPUnit_Framework_TestCase
     public function testBelgiumGermanCommunityDay()
     {
         $utc      = new \DateTimeZone("UTC");
-        $by       = new Holiday\BE\GER($utc);
+        $by       = new Holiday\Be\BeGer($utc);
         $holidays = $by->between(
             new \DateTime("2017-11-15", $utc),
             new \DateTime("2017-11-15", $utc));
