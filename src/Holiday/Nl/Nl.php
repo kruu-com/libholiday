@@ -62,7 +62,7 @@ class Nl extends Calculator
         $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
 
         $data[] = new Holiday($easter->modify('-2 days'), "Goede vrijdag", $timezone, Holiday::NOTABLE);
-        $data[] = new Holiday($easter, "1ste paasdag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter->format('d.m.Y'), "1ste paasdag", $timezone, Holiday::NOTABLE);
         $data[] = new Holiday($easter->modify("+49 days"), "1ste pinksterdag", $timezone, Holiday::NOTABLE);
         $data[] = new Holiday("01.05." . $year, "Dag van de Arbeid", $timezone, Holiday::NOTABLE);
 

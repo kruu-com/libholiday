@@ -71,8 +71,8 @@ class Gb extends Calculator
 
         /** @var Holiday[] $data */
         $data   = array();
-        $easter = $this->getEaster($year);
-        $data[] = new Holiday($easter, "Ostersonntag", $timezone, Holiday::NOTABLE);
+        $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
+        $data[] = new Holiday($easter->format('d.m.Y'), "Ostersonntag", $timezone, Holiday::NOTABLE);
         $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, Holiday::NOTABLE, 0.5);
         $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, Holiday::NOTABLE, 0.5);
 

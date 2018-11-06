@@ -68,7 +68,7 @@ class Es extends Calculator
         $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
 
         $data[] = new Holiday($easter->modify("-2 days")->format('d.m.Y'), "Karfreitag", $timezone, Holiday::NOTABLE);
-        $data[] = new Holiday($easter, "Ostersonntag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter->format('d.m.Y'), "Ostersonntag", $timezone, Holiday::NOTABLE);
         $data[] = new Holiday($easter->modify("+49 days")->format('d.m.Y'), "Pfingstsonntag", $timezone, Holiday::NOTABLE);
 
         return $data;
