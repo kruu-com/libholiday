@@ -26,6 +26,7 @@ class DeNw extends De
 
         $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
 
+        $data[] = new Holiday($easter->modify("-48 days")->format('d.m.Y'), "Rosenmontag", $timezone, Holiday::NOTABLE, 0.5);
         $data[] = new Holiday($easter->modify("+60 days")->format('d.m.Y'), "Fronleichnam", $timezone);
         $data[] = new Holiday("1.11." . $year, "Allerheiligen", $timezone);
 

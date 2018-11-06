@@ -13,7 +13,7 @@ class At4 extends At
         /** @var Holiday[] $data */
         $data   = parent::getHolidays($year);
 
-        $data[] = new Holiday("04.05."  . $year, "St. Florian", $timezone, Holiday::PARTIAL);
+        $data[] = new Holiday("04.05."  . $year, "St. Florian", $timezone, Holiday::NOTABLE);
 
         return $data;
     }

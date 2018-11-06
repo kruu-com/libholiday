@@ -74,16 +74,16 @@ class De extends Calculator
 
         $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
 
-        $data[] = new Holiday($easter->modify("-48 days")->format('d.m.Y'), "Rosenmontag", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday($easter->modify("-47 days")->format('d.m.Y'), "Fastnacht", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday($easter->modify("-46 days")->format('d.m.Y'), "Aschermittwoch", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday($easter->modify("-7 days")->format('d.m.Y'), "Palmsonntag", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday($easter->modify("-3 days")->format('d.m.Y'), "Gründonnerstag", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday($easter->format('d.m.Y'), "Ostersonntag", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday($easter->modify("+49 days")->format('d.m.Y'), "Pfingstsonntag", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday("6.12."  . $year, "Nikolaus", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, Holiday::PARTIAL, 0.5);
-        $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, Holiday::PARTIAL, 0.5);
+        $data[] = new Holiday($easter->modify("-48 days")->format('d.m.Y'), "Rosenmontag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter->modify("-47 days")->format('d.m.Y'), "Fastnacht", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter->modify("-46 days")->format('d.m.Y'), "Aschermittwoch", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter->modify("-7 days")->format('d.m.Y'), "Palmsonntag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter->modify("-3 days")->format('d.m.Y'), "Gründonnerstag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter->format('d.m.Y'), "Ostersonntag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter->modify("+49 days")->format('d.m.Y'), "Pfingstsonntag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday("6.12."  . $year, "Nikolaus", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, Holiday::NOTABLE, 0.5);
+        $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, Holiday::NOTABLE, 0.5);
 
         return $data;
     }

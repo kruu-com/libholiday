@@ -6,6 +6,12 @@ use Holiday\Exception\CalculatorException;
 
 class CalculatorService
 {
+    /**
+     * @param string $country
+     * @param null|string $state
+     * @return Calculator
+     * @throws CalculatorException
+     */
     public function getCalculatorByCountryAndState(string $country, ?string $state = null): Calculator
     {
         $country = ucfirst(strtolower($country));
@@ -24,7 +30,13 @@ class CalculatorService
         throw new CalculatorException('Country not available');
     }
 
-    public function isHoliday(\DateTime $date, string $country, string $state = null)
+    /**
+     * @param \DateTime $date
+     * @param string $country
+     * @param string|null $state
+     * @return null|iterable|Holiday[]
+     */
+    public function getHolidayForDate(\DateTime $date, string $country, string $state = null): ?iterable
     {
         $calculator = $this->getCalculatorByCountryAndState($country, $state);
 

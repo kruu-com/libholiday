@@ -61,17 +61,17 @@ class Nl extends Calculator
 
         $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
 
-        $data[] = new Holiday($easter->modify('-2 days'), "Goede vrijdag", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday($easter, "1ste paasdag", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday($easter->modify("+49 days"), "1ste pinksterdag", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday("01.05." . $year, "Dag van de Arbeid", $timezone, Holiday::PARTIAL);
+        $data[] = new Holiday($easter->modify('-2 days'), "Goede vrijdag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter, "1ste paasdag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter->modify("+49 days"), "1ste pinksterdag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday("01.05." . $year, "Dag van de Arbeid", $timezone, Holiday::NOTABLE);
 
         if ($year % 5 > 0) {
-            $data[] = new Holiday("05.05." . $year, "Bevrijdingsdag", $timezone, Holiday::PARTIAL);
+            $data[] = new Holiday("05.05." . $year, "Bevrijdingsdag", $timezone, Holiday::NOTABLE);
         }
 
-        $data[] = new Holiday("24.12." . $year, "Kerstavond", $timezone, Holiday::PARTIAL, 0.5);
-        $data[] = new Holiday("31.12." . $year, "Oudejaarsavond", $timezone, Holiday::PARTIAL, 0.5);
+        $data[] = new Holiday("24.12." . $year, "Kerstavond", $timezone, Holiday::NOTABLE, 0.5);
+        $data[] = new Holiday("31.12." . $year, "Oudejaarsavond", $timezone, Holiday::NOTABLE, 0.5);
 
         return $data;
     }

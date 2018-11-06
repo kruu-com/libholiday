@@ -72,9 +72,9 @@ class Gb extends Calculator
         /** @var Holiday[] $data */
         $data   = array();
         $easter = $this->getEaster($year);
-        $data[] = new Holiday($easter, "Ostersonntag", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, Holiday::PARTIAL, 0.5);
-        $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, Holiday::PARTIAL, 0.5);
+        $data[] = new Holiday($easter, "Ostersonntag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, Holiday::NOTABLE, 0.5);
+        $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, Holiday::NOTABLE, 0.5);
 
         return $data;
     }

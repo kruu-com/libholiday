@@ -75,11 +75,11 @@ class At extends Calculator
 
         $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
 
-        $data[] = new Holiday($easter->modify("-2 days")->format('d.m.Y'), "Karfreitag", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday($easter->modify("+49 days")->format('d.m.Y'), "Pfingstsonntag", $timezone, Holiday::PARTIAL);
+        $data[] = new Holiday($easter->modify("-2 days")->format('d.m.Y'), "Karfreitag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter->modify("+49 days")->format('d.m.Y'), "Pfingstsonntag", $timezone, Holiday::NOTABLE);
 
-        $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, Holiday::PARTIAL, 0.5);
-        $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, Holiday::PARTIAL, 0.5);
+        $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, Holiday::NOTABLE, 0.5);
+        $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, Holiday::NOTABLE, 0.5);
 
         return $data;
     }

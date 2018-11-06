@@ -75,8 +75,8 @@ class Pl extends Calculator
 
         $easter = new \DateTimeImmutable($this->getEaster($year)->format('Y-m-d'));
 
-        $data[] = new Holiday($easter->modify("+49 days")->format('d.m.Y'), "Pfingstsonntag", $timezone, Holiday::PARTIAL);
-        $data[] = new Holiday($easter->format('d.m.Y'), "Ostersonntag", $timezone, Holiday::PARTIAL);
+        $data[] = new Holiday($easter->modify("+49 days")->format('d.m.Y'), "Pfingstsonntag", $timezone, Holiday::NOTABLE);
+        $data[] = new Holiday($easter->format('d.m.Y'), "Ostersonntag", $timezone, Holiday::NOTABLE);
 
         if(2018 === $year) {
             $data[] = new Holiday("12.11." . $year, "Unabhängigkeitstag (zus.)", $timezone);
