@@ -6,7 +6,7 @@ use Holiday\Exception\CalculatorException;
 
 class CalculatorService
 {
-    public function getCalculatorByCountryAndState(string $country, string $state = null): Calculator
+    public function getCalculatorByCountryAndState(string $country, ?string $state = null): Calculator
     {
         $country = ucfirst(strtolower($country));
         $state = ucfirst(strtolower($state));
