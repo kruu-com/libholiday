@@ -26,6 +26,7 @@ class Holiday extends \DateTime
     const HOLIDAY        = "holiday";
     const NOTABLE        = "notable";
     const SCHOOL_HOLIDAY = "school";
+    const SUB_REGIONAL   = "subregional";
 
     public $type;
     public $name;

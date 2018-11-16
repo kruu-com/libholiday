@@ -34,7 +34,7 @@ class LuxembourgTest extends \PHPUnit_Framework_TestCase
         $start = new \DateTime("2012-01-01", $this->timezone);
         $end   = new \DateTime("2012-12-31", $this->timezone);
 
-        $luxembourg = new Holiday\Luxembourg\Luxembourg($this->timezone);
+        $luxembourg = new Holiday\Lu\Lu($this->timezone);
 
         $this->assertCount(14, $luxembourg->between($start, $end));
         $days = $luxembourg->between($start, $end);
@@ -48,7 +48,7 @@ class LuxembourgTest extends \PHPUnit_Framework_TestCase
 
     public function testLuxembourgBetween()
     {
-        $luxembourg = new Holiday\Luxembourg\Luxembourg($this->timezone);
+        $luxembourg = new Holiday\Lu\Lu($this->timezone);
         $res = $luxembourg->between(
                 new \DateTime("1.4.2012", $this->timezone),
                 new \DateTime("30.4.2012", $this->timezone));
@@ -83,7 +83,7 @@ class LuxembourgTest extends \PHPUnit_Framework_TestCase
 
     public function testLuxembourgPST() {
         $timezone = new \DateTimeZone("PST");
-        $luxembourg = new Holiday\Luxembourg\Luxembourg($timezone);
+        $luxembourg = new Holiday\Lu\Lu($timezone);
         $res = $luxembourg->between(
                 new \DateTime("1.5.2012", $timezone),
                 new \DateTime("2.5.2012", $timezone));
@@ -93,7 +93,7 @@ class LuxembourgTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testWeights() {
-        $luxembourg       = new Holiday\Luxembourg\Luxembourg($this->timezone);
+        $luxembourg       = new Holiday\Lu\Lu($this->timezone);
         $holidays = $luxembourg->between(
             new \DateTime("2012-12-24", $this->timezone),
             new \DateTime("2012-12-24", $this->timezone));
@@ -102,7 +102,7 @@ class LuxembourgTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testBug() {
-        $luxembourg      = new Holiday\Luxembourg\Echternach($this->timezone);
+        $luxembourg      = new Holiday\Lu\LuEc($this->timezone);
         $fail    = $luxembourg->between(
             new \DateTime("2011-06-01", $this->timezone),
             new \DateTime("2012-05-01", $this->timezone));

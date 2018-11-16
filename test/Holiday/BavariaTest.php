@@ -13,13 +13,24 @@
  * @license    LGPL v3 (See LICENSE file)
  */
 namespace Holiday\Test;
+use DateTimeZone;
 use Holiday;
 
 class BavariaTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \DateTimeZone
+     */
+    private $timezone = null;
+
+    public function setUp()
+    {
+        $this->timezone = new DateTimeZone('UTC');
+    }
+
     public function testEasterBug() {
         $utc      = new \DateTimeZone("UTC");
-        $by       = new Holiday\Germany\Bavaria($utc);
+        $by       = new Holiday\De\DeBy($utc);
         $holidays = $by->between(
             new \DateTime("2012-04-09", $utc),
             new \DateTime("2012-04-09", $utc));
@@ -28,5 +39,18 @@ class BavariaTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("Ostermontag", $holiday->name);
         $this->assertEquals("2012-04-09 00:00:00", $holiday->format("Y-m-d H:i:s"));
         $this->assertEquals("UTC", $holiday->getTimeZone()->getName());
+    }
+
+    public function testBug() {
+        $de      = new Holiday\De\DeBy($this->timezone);
+        $fail    = $de->between(
+            new \DateTime("2011-06-01", $this->timezone),
+            new \DateTime("2012-05-01", $this->timezone));
+        $correct = $de->between(
+            new \DateTime("2011-05-02", $this->timezone),
+            new \DateTime("2012-05-01", $this->timezone));
+        $this->assertNotEquals(12, count($fail));
+        $this->assertNotEquals(12, count($correct));
+        $this->assertEquals(23, count($fail));
     }
 }
