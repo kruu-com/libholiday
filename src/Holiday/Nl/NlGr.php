@@ -14,7 +14,7 @@
  */
 namespace Holiday\Nl;
 
-class NlZh extends Nl
+class NlGr extends Nl
 {
     protected function getHolidays($year)
     {

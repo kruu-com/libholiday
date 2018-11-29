@@ -12,11 +12,11 @@ class ChTg extends Ch
 
         $data   = parent::getHolidays($year);
 
-        $easter = new \DateTimeImmutable(parent::getEaster($year));
+        $easter = new \DateTimeImmutable(parent::getEaster($year)->format('d.m.Y'));
 
-        $data[] = new Holiday($easter->modify("-2 days"), "Karfreitag", $timezone);
-        $data[] = new Holiday($easter->modify("+1 day"), "Ostermontag", $timezone);
-        $data[] = new Holiday($easter->modify("+50 days"), "Pfingstmontag", $timezone);
+        $data[] = new Holiday($easter->modify("-2 days")->format('d.m.Y'), "Karfreitag", $timezone);
+        $data[] = new Holiday($easter->modify("+1 day")->format('d.m.Y'), "Ostermontag", $timezone);
+        $data[] = new Holiday($easter->modify("+50 days")->format('d.m.Y'), "Pfingstmontag", $timezone);
 
         $data[] = new Holiday("02.01." . $year, "Bertholdstag", $timezone);
         $data[] = new Holiday("01.05." . $year, "Tag der Arbeit", $timezone);
