@@ -30,7 +30,7 @@ class SwissChAgTest extends \PHPUnit_Framework_TestCase
 
     public function testEasterBug() {
         $utc      = new \DateTimeZone("UTC");
-        $by       = new Holiday\Ch\ChGe($utc);
+        $by       = new Holiday\Ch\ChAg($utc);
         $holidays = $by->between(
             new \DateTime("2012-04-09", $utc),
             new \DateTime("2012-04-09", $utc));
@@ -42,7 +42,7 @@ class SwissChAgTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testBug() {
-        $de      = new Holiday\Ch\ChGe($this->timezone);
+        $de      = new Holiday\Ch\ChAg($this->timezone);
         $fail    = $de->between(
             new \DateTime("2011-06-01", $this->timezone),
             new \DateTime("2012-05-01", $this->timezone));
@@ -51,6 +51,6 @@ class SwissChAgTest extends \PHPUnit_Framework_TestCase
             new \DateTime("2012-05-01", $this->timezone));
         $this->assertNotEquals(12, count($fail));
         $this->assertNotEquals(12, count($correct));
-        $this->assertEquals(10, count($fail));
+        $this->assertEquals(14, count($fail));
     }
 }
