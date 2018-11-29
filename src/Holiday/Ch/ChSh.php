@@ -12,16 +12,16 @@ class ChSh extends Ch
 
         $data   = parent::getHolidays($year);
 
-        $easter = new \DateTimeImmutable(parent::getEaster($year));
+        $easter = new \DateTimeImmutable(parent::getEaster($year)->format('d.m.Y'));
 
-        $data[] = new Holiday($easter->modify("-2 days"), "Karfreitag", $timezone);
-        $data[] = new Holiday($easter->modify("+1 day"), "Ostermontag", $timezone);
-        $data[] = new Holiday($easter->modify("+50 days"), "Pfingstmontag", $timezone);
-        $data[] = new Holiday($easter->modify("+50 days"), "Pfingstmontag", $timezone);
+        $data[] = new Holiday($easter->modify("-2 days")->format('d.m.Y'), "Karfreitag", $timezone);
+        $data[] = new Holiday($easter->modify("+1 day")->format('d.m.Y'), "Ostermontag", $timezone);
+        $data[] = new Holiday($easter->modify("+50 days")->format('d.m.Y'), "Pfingstmontag", $timezone);
+        $data[] = new Holiday($easter->modify("+50 days")->format('d.m.Y'), "Pfingstmontag", $timezone);
 
         $data[] = new Holiday("01.05." . $year, "Tag der Arbeit", $timezone);
         $date = new \DateTimeImmutable('Third Sunday of September ' . $year);
-        $data[] = new Holiday($date, "Eidgenössischer Dank-, Buss- und Bettag", $timezone);
+        $data[] = new Holiday($date->format('d.m.Y'), "Eidgenössischer Dank-, Buss- und Bettag", $timezone);
         $data[] = new Holiday("26.12." . $year, "Stephanstag", $timezone);
 
         return $data;

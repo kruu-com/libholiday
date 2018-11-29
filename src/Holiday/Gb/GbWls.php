@@ -31,7 +31,7 @@ class GbWls extends Gb
             $date = new Holiday(new \DateTime('first Monday of January '.$year, $timezone), "Neujahrstag", $timezone);
         }
         $data[] = $date;
-        $data[] = new Holiday($easter->modify("+1 day"), "Ostermontag", $timezone);
+        $data[] = new Holiday($easter->modify("+1 day")->format('Y-m-d'), "Ostermontag", $timezone);
         $data[] = new Holiday("last Monday of August " . $year, "August Bank Holiday", $timezone);
 
         return $data;
