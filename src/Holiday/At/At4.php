@@ -6,7 +6,7 @@ use Holiday\Holiday;
 
 class At4 extends At
 {
-    protected function getSpecial($year)
+    protected function getHolidays($year)
     {
         $timezone = $this->timezone;
 
