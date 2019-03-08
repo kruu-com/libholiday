@@ -34,9 +34,9 @@ class GermanyBerlinTest extends \PHPUnit_Framework_TestCase
         $start = new \DateTime("2012-01-01", $this->timezone);
         $end   = new \DateTime("2012-12-31", $this->timezone);
 
-        $de = new Holiday\De\De($this->timezone);
+        $de = new Holiday\De\DeBe($this->timezone);
 
-        $this->assertCount(19, $de->between($start, $end));
+        $this->assertCount(20, $de->between($start, $end));
         $days = $de->between($start, $end);
         $this->assertEquals(
             new Holiday\Holiday("6.4.2012", "Karfreitag", $this->timezone),
