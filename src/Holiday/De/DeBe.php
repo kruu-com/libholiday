@@ -14,6 +14,18 @@
  */
 namespace Holiday\De;
 
+use Holiday\Holiday;
+
 class DeBe extends De
 {
+    protected function getHolidays($year)
+    {
+        $timezone = $this->timezone;
+
+        $data   = parent::getHolidays($year);
+
+        $data[] = new Holiday("8.3." . $year, "Internationaler Frauentag", $timezone);
+
+        return $data;
+    }
 }
