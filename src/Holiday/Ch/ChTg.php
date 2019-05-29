@@ -21,7 +21,7 @@ class ChTg extends Ch
         $data[] = new Holiday("02.01." . $year, "Bertholdstag", $timezone);
         $data[] = new Holiday("01.05." . $year, "Tag der Arbeit", $timezone);
         $date = new \DateTimeImmutable('Third Sunday of September ' . $year);
-        $data[] = new Holiday($date, "Eidgenössischer Dank-, Buss- und Bettag", $timezone);
+        $data[] = new Holiday($date->format('d.m.Y'), "Eidgenössischer Dank-, Buss- und Bettag", $timezone);
         $data[] = new Holiday("26.12." . $year, "Stephanstag", $timezone);
 
         return $data;
