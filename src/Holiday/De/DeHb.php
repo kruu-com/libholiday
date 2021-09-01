@@ -14,6 +14,18 @@
  */
 namespace Holiday\De;
 
+use Holiday\Holiday;
+
 class DeHb extends De
 {
+    protected function getHolidays($year)
+    {
+        $timezone = $this->timezone;
+
+        $data   = parent::getHolidays($year);
+
+        $data[] = new Holiday("31.10." . $year, "Reformationstag", $timezone);
+
+        return $data;
+    }
 }
