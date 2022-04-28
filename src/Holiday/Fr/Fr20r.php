@@ -11,17 +11,20 @@
  *
  * @copyright  Copyright (c) 2012 Mayflower GmbH (http://www.mayflower.de)
  * @license    LGPL v3 (See LICENSE file)
+ *
+ *
+ * ISO-3166-2 Code according to wikipedia COR
+ * End of 2021-11 COR got changed to a metropolitan collectivity with special
+ * status, which now is 20R
  */
 namespace Holiday\Fr;
 
 use Holiday\Holiday;
 
-class FrCor extends Fr20r
+class Fr20r extends Fr
 {
     protected function getHolidays($year)
     {
-        // Please add new public holidays not in here. Use parent class Fr20r.php (see comment there why)
-
         $timezone = $this->timezone;
 
         $data   = parent::getHolidays($year);
