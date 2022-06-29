@@ -25,6 +25,7 @@ class DeMv extends De
         $data   = parent::getHolidays($year);
 
         $data[] = new Holiday("31.10." . $year, "Reformationstag", $timezone);
+        $data[] = new Holiday("8.3." . $year, "Internationaler Frauentag", $timezone);
 
         return $data;
     }
