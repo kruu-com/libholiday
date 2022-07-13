@@ -4,7 +4,7 @@ namespace Holiday\Dk;
 
 class Dk85 extends Dk
 {
-    protected function getHolidays($year)
+    protected function getHolidays(int $year): array
     {
         $data   = parent::getHolidays($year);
 

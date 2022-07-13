@@ -4,7 +4,7 @@ namespace Holiday\Dk;
 
 class Dk83 extends Dk
 {
-    protected function getHolidays($year)
+    protected function getHolidays(int $year): array
     {
         $timezone = $this->timezone;
 

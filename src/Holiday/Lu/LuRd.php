@@ -16,7 +16,7 @@ namespace Holiday\Lu;
 
 class LuRd extends Lu
 {
-    protected function getHolidays($year)
+    protected function getHolidays(int $year): array
     {
         $data = parent::getHolidays($year);
 

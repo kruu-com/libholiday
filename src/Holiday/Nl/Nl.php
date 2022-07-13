@@ -20,7 +20,7 @@ use Holiday\Holiday;
 
 class Nl extends Calculator
 {
-    protected function getHolidays($year)
+    protected function getHolidays(int $year): array
     {
         $timezone = $this->timezone;
 

@@ -6,7 +6,7 @@ use Holiday\Holiday;
 
 class It34 extends It
 {
-    protected function getHolidays($year)
+    protected function getHolidays(int $year): array
     {
         $timezone = $this->timezone;
 

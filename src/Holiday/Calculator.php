@@ -12,6 +12,7 @@
  * @copyright  Copyright (c) 2012 Mayflower GmbH (http://www.mayflower.de)
  * @license    LGPL v3 (See LICENSE file)
  */
+
 namespace Holiday;
 
 /**
@@ -22,7 +23,8 @@ abstract class Calculator
 {
     protected $timezone;
 
-    public function __construct(\DateTimeZone $timezone = null) {
+    public function __construct(\DateTimeZone $timezone = null)
+    {
         $this->timezone = $timezone;
     }
 
@@ -33,10 +35,8 @@ abstract class Calculator
      *
      * @see between()
      *
-     * @param int $year The year to get the holidays for.
-     * @return array
      */
-    abstract protected function getHolidays($year);
+    abstract protected function getHolidays(int $year): array;
 
     /**
      * Provides a DateTime object that represents easter sunday for this year.
@@ -44,13 +44,9 @@ abstract class Calculator
      * The DateTime object is always set to the current default timezone and
      * not UTC and time is set 0:00.
      *
-     * @param int $year The year for which to calculate the easter sunday date.
-     *
-     * @return \DateTime
-     *
      * TODO: add timezone calculation
      */
-    protected function getEaster($year)
+    protected function getEaster(int $year): \DateTime
     {
         $easter = new \DateTime('now', $this->timezone);
         $easter->setDate($year, 3, 21);
@@ -61,13 +57,8 @@ abstract class Calculator
 
     /**
      * Returns all holidays in the given time period.
-     *
-     * @param \DateTime $start The start date
-     * @param \DateTime $end   The end date
-     *
-     * @return array
      */
-    public function between(\DateTime $start, \DateTime $end)
+    public function between(\DateTime $start, \DateTime $end): array
     {
         // Comparing DateTime also looks at the time. So we need to make sure the time is 0,
         // but don't modify the original referenced DateTime parameters
@@ -76,9 +67,9 @@ abstract class Calculator
         $start->setTime(0, 0, 0);
         $end->setTime(0, 0, 0);
 
-        $startyear = (int) $start->format("Y");
-        $endyear   = (int) $end->format("Y");
-        $holidays  = array();
+        $startyear = (int)$start->format("Y");
+        $endyear = (int)$end->format("Y");
+        $holidays = array();
         for ($y = $startyear; $y <= $endyear; $y++) {
             $holidays = array_merge($holidays, $this->getHolidays($y));
         }
