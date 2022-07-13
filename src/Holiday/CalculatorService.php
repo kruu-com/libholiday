@@ -3,6 +3,7 @@
 namespace Holiday;
 
 use Holiday\Exception\CalculatorException;
+use Holiday\Exception\CalculatorForStateNotAvailableException;
 
 class CalculatorService
 {
@@ -11,23 +12,32 @@ class CalculatorService
      * @param null|string $state
      * @return Calculator
      * @throws CalculatorException
+     * @throws CalculatorForStateNotAvailableException
      */
     public function getCalculatorByCountryAndState(string $country, ?string $state = null): Calculator
     {
         $country = ucfirst(strtolower($country));
 
-        if (null === $state) {
-            $className = sprintf('Holiday\\%s\\%s', $country, $country);
-        } else {
+        $countryCalculatorClassName = sprintf('Holiday\\%s\\%s', $country, $country);
+
+        if (!class_exists($countryCalculatorClassName)) {
+            throw new CalculatorException('Country not available');
+        }
+
+        $countryCalculator = new $countryCalculatorClassName();
+
+        if (null !== $state) {
             $state = ucfirst(strtolower($state));
-            $className = sprintf('Holiday\\%s\\%s%s', $country, $country, $state);
+            $countryStateCalculatorClassName = sprintf('Holiday\\%s\\%s%s', $country, $country, $state);
+
+            if (!class_exists($countryStateCalculatorClassName)) {
+                throw new CalculatorForStateNotAvailableException(sprintf('Calculator for country %s and state %s does not exists.', $country, $state), $countryCalculator);
+            }
+
+            return new $countryStateCalculatorClassName();
         }
 
-        if (class_exists($className)) {
-            return new $className();
-        }
-
-        throw new CalculatorException('Country not available');
+        return $countryCalculator;
     }
 
     /**

@@ -34,6 +34,11 @@ class CalculatorServiceTest extends TestCase
     /**
      * @var string
      */
+    private $countryUs;
+
+    /**
+     * @var string
+     */
     private $stateAT;
 
     /**
@@ -54,6 +59,8 @@ class CalculatorServiceTest extends TestCase
         $this->countryDE = 'De';
         $this->stateDE = 'BY';
 
+        $this->countryUs = 'Us';
+
         $this->calculatorService = new CalculatorService();
     }
 
@@ -70,5 +77,18 @@ class CalculatorServiceTest extends TestCase
     public function testCalculatorServiceForCountryAndStateCanBeLoaded() {
         $fixture = $this->calculatorService->getCalculatorByCountryAndState($this->countryDE, $this->stateDE);
         $this->assertInstanceOf(Holiday\De\DeBy::class, $fixture);
+    }
+
+    public function testThrowsForNotImplementedCountry() {
+        $this->expectException(Holiday\Exception\CalculatorException::class);
+        $this->calculatorService->getCalculatorByCountryAndState('XX');
+    }
+
+    public function testCalculatorForStateNotAvailableExceptionHasUsHolidayCalculator() {
+        try {
+            $this->calculatorService->getCalculatorByCountryAndState($this->countryUs, 'XX');
+        } catch (Holiday\Exception\CalculatorForStateNotAvailableException $e) {
+            $this->assertInstanceOf(Holiday\Us\Us::class, $e->getCountryCalculator());
+        }
     }
 }
