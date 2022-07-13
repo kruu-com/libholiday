@@ -18,7 +18,7 @@ use Holiday\Holiday;
 
 class DeHh extends De
 {
-    protected function getHolidays($year)
+    protected function getHolidays(int $year): array
     {
         $timezone = $this->timezone;
 

@@ -24,7 +24,7 @@ class Gb extends Calculator
      * @param int $year
      * @return array
      */
-    protected function getHolidays($year)
+    protected function getHolidays(int $year): array
     {
         return array_merge(
             $this->getPublicHolidays($year),

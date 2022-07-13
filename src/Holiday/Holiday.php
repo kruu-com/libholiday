@@ -43,7 +43,7 @@ class Holiday extends \DateTime
      */
     public function __construct($time, $name, \DateTimeZone $timezone = null, $type = self::HOLIDAY, $weight = null)
     {
-        if ($time instanceof \DateTime) {
+        if ($time instanceof \DateTimeInterface) {
             parent::__construct($time->format("Y-m-d"), $time->getTimeZone());
         } else {
             parent::__construct($time, $timezone);

@@ -18,7 +18,7 @@ use Holiday\Holiday;
 
 class FrCor extends Fr20r
 {
-    protected function getHolidays($year)
+    protected function getHolidays(int $year): array
     {
         // Please add new public holidays not in here. Use parent class Fr20r.php (see comment there why)
 

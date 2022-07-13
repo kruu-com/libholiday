@@ -23,7 +23,7 @@ use Holiday\Holiday;
 
 class Fr20r extends Fr
 {
-    protected function getHolidays($year)
+    protected function getHolidays(int $year): array
     {
         $timezone = $this->timezone;
 

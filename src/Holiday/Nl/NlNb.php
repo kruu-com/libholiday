@@ -16,7 +16,7 @@ namespace Holiday\Nl;
 
 class NlNb extends Nl
 {
-    protected function getHolidays($year)
+    protected function getHolidays(int $year): array
     {
         $data = parent::getHolidays($year);
 

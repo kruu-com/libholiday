@@ -15,11 +15,11 @@ class CalculatorService
     public function getCalculatorByCountryAndState(string $country, ?string $state = null): Calculator
     {
         $country = ucfirst(strtolower($country));
-        $state = ucfirst(strtolower($state));
 
         if (null === $state) {
             $className = sprintf('Holiday\\%s\\%s', $country, $country);
         } else {
+            $state = ucfirst(strtolower($state));
             $className = sprintf('Holiday\\%s\\%s%s', $country, $country, $state);
         }
 

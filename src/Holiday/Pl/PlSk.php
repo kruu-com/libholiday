@@ -16,7 +16,7 @@ namespace Holiday\Pl;
 
 class PlSk extends Pl
 {
-    protected function getHolidays($year)
+    protected function getHolidays(int $year): array
     {
         $data = parent::getHolidays($year);
 

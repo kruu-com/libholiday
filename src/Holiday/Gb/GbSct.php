@@ -18,7 +18,7 @@ use Holiday\Holiday;
 
 class GbSct extends Gb
 {
-    protected function getHolidays($year)
+    protected function getHolidays(int $year): array
     {
         $timezone = $this->timezone;
 

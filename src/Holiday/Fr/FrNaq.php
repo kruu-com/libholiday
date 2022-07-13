@@ -18,7 +18,7 @@ use Holiday\Holiday;
 
 class FrNaq extends Fr
 {
-    protected function getHolidays($year)
+    protected function getHolidays(int $year): array
     {
         $timezone = $this->timezone;
 
