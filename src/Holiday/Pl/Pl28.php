@@ -14,7 +14,7 @@
  */
 namespace Holiday\Pl;
 
-class PlLd extends Pl
+class Pl28 extends Pl
 {
     protected function getHolidays(int $year): array
     {
