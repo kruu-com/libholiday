@@ -50,7 +50,7 @@ class Us extends Calculator
             new Holiday(clone $christmas, 'Christmas', $this->timezone),
             new Holiday(clone $thanksgiving, 'Thanksgiving Day', $this->timezone),
             new Holiday($newYearsDay, "New Year's Day", $this->timezone),
-            new Holiday(new \DateTimeImmutable($year.'-6-19', $this->timezone), 'Emancipation day', $this->timezone),
+            new Holiday(new \DateTimeImmutable($year.'-7-4', $this->timezone), 'Independence Day', $this->timezone),
             new Holiday(new \DateTimeImmutable($year.'-11-11', $this->timezone), 'Veterans Day', $this->timezone),
             new Holiday(new \DateTimeImmutable('second Monday of October '.$year, $this->timezone), 'Columbus Day', $this->timezone),
             new Holiday(new \DateTimeImmutable('first Monday of September '.$year, $this->timezone), 'Labor Day', $this->timezone),
