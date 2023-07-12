@@ -20,7 +20,7 @@ use Holiday\Holiday;
 class Us extends Calculator
 {
     /**
-     * Get public holidays valid in states of Germany as well as special holidays not valid in states of Germany.
+     * Get public holidays valid in states of US as well as special holidays not valid in states of Us.
      * @param int $year
      * @return array
      */
@@ -33,7 +33,7 @@ class Us extends Calculator
     }
 
     /**
-     * Get _public holidays_ only. Not in all states of Germany days from getSpecial() are public holidays.
+     * Get _public holidays_ only. Not in all states of US days from getSpecial() are public holidays.
      *
      * Moved to dedicated method in order to retain compatibility of getHolidays() with existing code.
      *
@@ -44,12 +44,13 @@ class Us extends Calculator
     {
         $christmas = new \DateTimeImmutable($year.'-12-25', $this->timezone);
         $thanksgiving = new \DateTimeImmutable('fourth Thursday of November '.$year, $this->timezone);
+        $newYearsDay = new \DateTimeImmutable($year.'-1-1', $this->timezone);
 
         $holidays = [
             new Holiday(clone $christmas, 'Christmas', $this->timezone),
             new Holiday(clone $thanksgiving, 'Thanksgiving Day', $this->timezone),
-            new Holiday(new \DateTimeImmutable($year.'-1-1', $this->timezone), "New Year's Day", $this->timezone),
-            new Holiday(new \DateTimeImmutable($year.'-7-4', $this->timezone), 'Independence Day', $this->timezone),
+            new Holiday($newYearsDay, "New Year's Day", $this->timezone),
+            new Holiday(new \DateTimeImmutable($year.'-6-19', $this->timezone), 'Emancipation day', $this->timezone),
             new Holiday(new \DateTimeImmutable($year.'-11-11', $this->timezone), 'Veterans Day', $this->timezone),
             new Holiday(new \DateTimeImmutable('second Monday of October '.$year, $this->timezone), 'Columbus Day', $this->timezone),
             new Holiday(new \DateTimeImmutable('first Monday of September '.$year, $this->timezone), 'Labor Day', $this->timezone),
@@ -57,6 +58,10 @@ class Us extends Calculator
             new Holiday(new \DateTimeImmutable('third Monday of February '.$year, $this->timezone), "President's Day", $this->timezone),
             new Holiday(new \DateTimeImmutable('third Monday of January '.$year, $this->timezone), 'Martin Luther King, Jr. Day', $this->timezone),
         ];
+
+        if ($newYearsDay->format('N') === 6 || $newYearsDay->format('N') === 7) {
+            new Holiday($newYearsDay->modify('+1 day'), "New Year's Day (in lieu)", $this->timezone);
+        }
 
         $holidays[] = new Holiday($christmas->modify('-1 day'), 'Christmas Eve', $this->timezone);
         $holidays[] = new Holiday($thanksgiving->modify('+1 day'), 'Thanksgiving Adam', $this->timezone);
