@@ -16,6 +16,8 @@ namespace Holiday\Us;
 
 use Holiday\Calculator;
 use Holiday\Holiday;
+use Holiday\InLineHolidayRules;
+use Holiday\InLineHolidayService;
 
 class Us extends Calculator
 {
@@ -44,14 +46,10 @@ class Us extends Calculator
     {
         $christmas = new \DateTimeImmutable($year.'-12-25', $this->timezone);
         $thanksgiving = new \DateTimeImmutable('fourth Thursday of November '.$year, $this->timezone);
-        $newYearsDay = new \DateTimeImmutable($year.'-1-1', $this->timezone);
 
         $holidays = [
             new Holiday(clone $christmas, 'Christmas', $this->timezone),
             new Holiday(clone $thanksgiving, 'Thanksgiving Day', $this->timezone),
-            new Holiday($newYearsDay, "New Year's Day", $this->timezone),
-            new Holiday(new \DateTimeImmutable($year.'-7-4', $this->timezone), 'Independence Day', $this->timezone),
-            new Holiday(new \DateTimeImmutable($year.'-11-11', $this->timezone), 'Veterans Day', $this->timezone),
             new Holiday(new \DateTimeImmutable('second Monday of October '.$year, $this->timezone), 'Columbus Day', $this->timezone),
             new Holiday(new \DateTimeImmutable('first Monday of September '.$year, $this->timezone), 'Labor Day', $this->timezone),
             new Holiday(new \DateTimeImmutable('last Monday of May '.$year, $this->timezone), 'Memorial Day', $this->timezone),
@@ -59,9 +57,19 @@ class Us extends Calculator
             new Holiday(new \DateTimeImmutable('third Monday of January '.$year, $this->timezone), 'Martin Luther King, Jr. Day', $this->timezone),
         ];
 
-        if ($newYearsDay->format('N') === 6 || $newYearsDay->format('N') === 7) {
-            new Holiday($newYearsDay->modify('+1 day'), "New Year's Day (in lieu)", $this->timezone);
+        if ($year >= 2021) {
+            $juneteenth = new Holiday(new \DateTimeImmutable($year.'-06-19', $this->timezone), 'Juneteenth Day', $this->timezone);
+            $holidays = InLineHolidayService::checkInLineHoliday($juneteenth, $holidays, new InLineHolidayRules(true, false,true, true));
         }
+
+        $independenceDay = new Holiday(new \DateTimeImmutable($year.'-7-4', $this->timezone), 'Independence Day', $this->timezone);
+        $holidays = InLineHolidayService::checkInLineHoliday($independenceDay, $holidays, new InLineHolidayRules(true, false,true, true));
+
+        $veteransDay = new Holiday(new \DateTimeImmutable($year.'-11-11', $this->timezone), 'Veterans Day', $this->timezone);
+        $holidays = InLineHolidayService::checkInLineHoliday($veteransDay, $holidays, new InLineHolidayRules(true, false,true, true));
+
+        $newYearsDay = new Holiday($year.'-1-1', "New Year's Day", $this->timezone);
+        $holidays = InLineHolidayService::checkInLineHoliday($newYearsDay, $holidays, new InLineHolidayRules(true, false,true, true));
 
         $holidays[] = new Holiday($christmas->modify('-1 day'), 'Christmas Eve', $this->timezone);
         $holidays[] = new Holiday($thanksgiving->modify('+1 day'), 'Thanksgiving Adam', $this->timezone);

@@ -19,15 +19,15 @@ use Holiday\Holiday;
 
 class UsDc extends Us
 {
-
-
-
     protected function getPublicHolidays($year)
     {
         $holidays = parent::getHolidays($year);
 
+        $firstInaugurationYear = 1789;
+        if (($year-$firstInaugurationYear) % 4 === 0) {
+            $holidays[] = new Holiday($year.'-1-20', "Inauguration Day", $this->timezone);
+        }
+
         return $holidays;
     }
-
-
 }

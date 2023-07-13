@@ -19,15 +19,10 @@ use Holiday\Holiday;
 
 class UsIn extends Us
 {
-
-
-
     protected function getPublicHolidays($year)
     {
         $holidays = parent::getHolidays($year);
 
         return $holidays;
     }
-
-
 }
