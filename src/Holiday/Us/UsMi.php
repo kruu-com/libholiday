@@ -17,7 +17,7 @@ namespace Holiday\Us;
 use Holiday\Calculator;
 use Holiday\Holiday;
 
-class UsMI extends Us
+class UsMi extends Us
 {
     protected function getPublicHolidays($year)
     {
