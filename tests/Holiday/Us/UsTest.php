@@ -40,6 +40,7 @@ class UsTest extends TestCase
         $mlkDay = new \DateTime('2015-01-19', $this->timezone);
         $presidentsDay = new \DateTime('2015-02-16', $this->timezone);
         $memorialDay = new \DateTime('2015-05-25', $this->timezone);
+        $juneteenthDay = new \DateTime('2021-06-19', $this->timezone);
         $laborDay = new \DateTime('2014-09-01', $this->timezone);
         $veteransDay = new \DateTime('2014-11-11', $this->timezone);
         $columbusDay = new \DateTime('2014-10-13', $this->timezone);
@@ -55,9 +56,19 @@ class UsTest extends TestCase
         $this->assertEquals(true, count($this->holiday->isHoliday($mlkDay)) > 0, 'MLK Day Failed');
         $this->assertEquals(true, count($this->holiday->isHoliday($presidentsDay)) > 0, 'Presidents Day Failed');
         $this->assertEquals(true, count($this->holiday->isHoliday($memorialDay)) > 0, 'Memorial Day Failed');
+        $this->assertEquals(true, count($this->holiday->isHoliday($juneteenthDay)) > 0, 'Juneteenth Day Failed');
         $this->assertEquals(true, count($this->holiday->isHoliday($laborDay)) > 0, 'Labor Day Failed');
         $this->assertEquals(true, count($this->holiday->isHoliday($veteransDay)) > 0, 'Veterans Day Failed');
         $this->assertEquals(true, count($this->holiday->isHoliday($columbusDay)) > 0, 'Columbus Day Failed');
         $this->assertNotEquals(true, count($this->holiday->isHoliday($dummyDate)) > 0, 'Dummy Date Test Failed');
+    }
+
+    public function testFollowUpDayIsHoliday()
+    {
+        $newYears = new \DateTime('2023-01-01', $this->timezone);
+        $newYearsFollowUp = new \DateTime('2023-01-02', $this->timezone);
+
+        $this->assertEquals(true, count($this->holiday->isHoliday($newYears)) > 0, 'New Years Failed');
+        $this->assertEquals(true, count($this->holiday->isHoliday($newYearsFollowUp)) > 0, 'New Years Follow Up Failed');
     }
 }

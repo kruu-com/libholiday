@@ -16,11 +16,13 @@ namespace Holiday\Us;
 
 use Holiday\Calculator;
 use Holiday\Holiday;
+use Holiday\InLineHolidayRules;
+use Holiday\InLineHolidayService;
 
 class Us extends Calculator
 {
     /**
-     * Get public holidays valid in states of Germany as well as special holidays not valid in states of Germany.
+     * Get public holidays valid in states of US as well as special holidays not valid in states of Us.
      * @param int $year
      * @return array
      */
@@ -33,7 +35,7 @@ class Us extends Calculator
     }
 
     /**
-     * Get _public holidays_ only. Not in all states of Germany days from getSpecial() are public holidays.
+     * Get _public holidays_ only. Not in all states of US days from getSpecial() are public holidays.
      *
      * Moved to dedicated method in order to retain compatibility of getHolidays() with existing code.
      *
@@ -48,15 +50,26 @@ class Us extends Calculator
         $holidays = [
             new Holiday(clone $christmas, 'Christmas', $this->timezone),
             new Holiday(clone $thanksgiving, 'Thanksgiving Day', $this->timezone),
-            new Holiday(new \DateTimeImmutable($year.'-1-1', $this->timezone), "New Year's Day", $this->timezone),
-            new Holiday(new \DateTimeImmutable($year.'-7-4', $this->timezone), 'Independence Day', $this->timezone),
-            new Holiday(new \DateTimeImmutable($year.'-11-11', $this->timezone), 'Veterans Day', $this->timezone),
             new Holiday(new \DateTimeImmutable('second Monday of October '.$year, $this->timezone), 'Columbus Day', $this->timezone),
             new Holiday(new \DateTimeImmutable('first Monday of September '.$year, $this->timezone), 'Labor Day', $this->timezone),
             new Holiday(new \DateTimeImmutable('last Monday of May '.$year, $this->timezone), 'Memorial Day', $this->timezone),
             new Holiday(new \DateTimeImmutable('third Monday of February '.$year, $this->timezone), "President's Day", $this->timezone),
             new Holiday(new \DateTimeImmutable('third Monday of January '.$year, $this->timezone), 'Martin Luther King, Jr. Day', $this->timezone),
         ];
+
+        if ($year >= 2021) {
+            $juneteenth = new Holiday(new \DateTimeImmutable($year.'-06-19', $this->timezone), 'Juneteenth Day', $this->timezone);
+            $holidays = InLineHolidayService::checkInLineHoliday($juneteenth, $holidays, new InLineHolidayRules(true, false,true, true));
+        }
+
+        $independenceDay = new Holiday(new \DateTimeImmutable($year.'-7-4', $this->timezone), 'Independence Day', $this->timezone);
+        $holidays = InLineHolidayService::checkInLineHoliday($independenceDay, $holidays, new InLineHolidayRules(true, false,true, true));
+
+        $veteransDay = new Holiday(new \DateTimeImmutable($year.'-11-11', $this->timezone), 'Veterans Day', $this->timezone);
+        $holidays = InLineHolidayService::checkInLineHoliday($veteransDay, $holidays, new InLineHolidayRules(true, false,true, true));
+
+        $newYearsDay = new Holiday($year.'-1-1', "New Year's Day", $this->timezone);
+        $holidays = InLineHolidayService::checkInLineHoliday($newYearsDay, $holidays, new InLineHolidayRules(true, false,true, true));
 
         $holidays[] = new Holiday($christmas->modify('-1 day'), 'Christmas Eve', $this->timezone);
         $holidays[] = new Holiday($thanksgiving->modify('+1 day'), 'Thanksgiving Adam', $this->timezone);
