@@ -47,20 +47,20 @@ class UsMiTest extends TestCase
 
         $dummyDate = new \DateTime('2015-03-11', $this->timezone);
 
-        $this->assertEquals(true, count($this->holiday->isHoliday($christmas)) > 0, 'Christmas Failed');
-        $this->assertEquals(true, count($this->holiday->isHoliday($christmasEve)) > 0, 'Christmas Eve Failed');
-        $this->assertEquals(true, count($this->holiday->isHoliday($thanksgiving)) > 0, 'Thanksgiving Failed');
-        $this->assertEquals(true, count($this->holiday->isHoliday($thanksgivingAdamOrBlackFriday)) > 0, 'Black Friday Failed');
-        $this->assertEquals(true, count($this->holiday->isHoliday($newYears)) > 0, 'New Years Failed');
-        $this->assertEquals(true, count($this->holiday->isHoliday($independenceDay)) > 0, 'Independence Day Failed');
-        $this->assertEquals(true, count($this->holiday->isHoliday($martinLutherKingDay)) > 0, 'MLK Day Failed');
-        $this->assertEquals(true, count($this->holiday->isHoliday($presidentsDay)) > 0, 'Presidents Day Failed');
-        $this->assertEquals(true, count($this->holiday->isHoliday($memorialDay)) > 0, 'Memorial Day Failed');
-        $this->assertEquals(true, count($this->holiday->isHoliday($juneteenthDay)) > 0, 'Juneteenth Day Failed');
-        $this->assertEquals(true, count($this->holiday->isHoliday($laborDay)) > 0, 'Labor Day Failed');
-        $this->assertEquals(true, count($this->holiday->isHoliday($veteransDay)) > 0, 'Veterans Day Failed');
-        $this->assertEquals(true, count($this->holiday->isHoliday($columbusDay)) > 0, 'Columbus Day Failed');
-        $this->assertNotEquals(true, count($this->holiday->isHoliday($dummyDate)) > 0, 'Dummy Date Test Failed');
+        $this->assertEquals(true, count($this->holiday->isHoliday($christmas)) > 0, 'Christmas');
+        $this->assertEquals(true, count($this->holiday->isHoliday($christmasEve)) > 0, 'Christmas Eve');
+        $this->assertEquals(true, count($this->holiday->isHoliday($thanksgiving)) > 0, 'Thanksgiving');
+        $this->assertEquals(true, count($this->holiday->isHoliday($thanksgivingAdamOrBlackFriday)) > 0, 'Black Friday');
+        $this->assertEquals(true, count($this->holiday->isHoliday($newYears)) > 0, 'New Years');
+        $this->assertEquals(true, count($this->holiday->isHoliday($independenceDay)) > 0, 'Independence Day');
+        $this->assertEquals(true, count($this->holiday->isHoliday($martinLutherKingDay)) > 0, 'MLK Day');
+        $this->assertEquals(true, count($this->holiday->isHoliday($presidentsDay)) > 0, 'Presidents Day');
+        $this->assertEquals(true, count($this->holiday->isHoliday($memorialDay)) > 0, 'Memorial Day');
+        $this->assertEquals(true, count($this->holiday->isHoliday($juneteenthDay)) > 0, 'Juneteenth Day');
+        $this->assertEquals(true, count($this->holiday->isHoliday($laborDay)) > 0, 'Labor Day');
+        $this->assertEquals(true, count($this->holiday->isHoliday($veteransDay)) > 0, 'Veterans Day');
+        $this->assertEquals(true, count($this->holiday->isHoliday($columbusDay)) > 0, 'Columbus Day');
+        $this->assertNotEquals(true, count($this->holiday->isHoliday($dummyDate)) > 0, 'Dummy Date Test');
     }
 
     public function testFollowUpDayIsHoliday()
