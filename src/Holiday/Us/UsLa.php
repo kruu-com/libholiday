@@ -19,7 +19,7 @@ use Holiday\Holiday;
 
 class UsLa extends Us
 {
-    protected function getPublicHolidays($year)
+    protected function getHolidays($year): array
     {
         $holidays = parent::getHolidays($year);
 

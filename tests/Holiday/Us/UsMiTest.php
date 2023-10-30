@@ -14,19 +14,19 @@
  */
 namespace Tests\Holiday\Us;
 
-use Holiday\Us\Us;
+use Holiday\Us\UsMi;
 use PHPUnit\Framework\TestCase;
 
-class UsTest extends TestCase
+class UsMiTest extends TestCase
 {
-    private ?Us $holiday = null;
+    private ?UsMi $holiday = null;
 
     private ?\DateTimeZone $timezone = null;
 
     public function setUp(): void
     {
         $this->timezone = new \DateTimeZone('UTC');
-        $this->holiday = new Us($this->timezone);
+        $this->holiday = new UsMi($this->timezone);
     }
 
     public function testIsHoliday()
@@ -41,6 +41,7 @@ class UsTest extends TestCase
         $presidentsDay = new \DateTime('2015-02-16', $this->timezone);
         $memorialDay = new \DateTime('2015-05-25', $this->timezone);
         $juneteenthDay = new \DateTime('2021-06-19', $this->timezone);
+        $laborDay = new \DateTime('2014-09-01', $this->timezone);
         $veteransDay = new \DateTime('2014-11-11', $this->timezone);
         $columbusDay = new \DateTime('2014-10-13', $this->timezone);
 
@@ -56,25 +57,10 @@ class UsTest extends TestCase
         $this->assertEquals(true, count($this->holiday->isHoliday($presidentsDay)) > 0, 'Presidents Day');
         $this->assertEquals(true, count($this->holiday->isHoliday($memorialDay)) > 0, 'Memorial Day');
         $this->assertEquals(true, count($this->holiday->isHoliday($juneteenthDay)) > 0, 'Juneteenth Day');
+        $this->assertEquals(true, count($this->holiday->isHoliday($laborDay)) > 0, 'Labor Day');
         $this->assertEquals(true, count($this->holiday->isHoliday($veteransDay)) > 0, 'Veterans Day');
         $this->assertEquals(true, count($this->holiday->isHoliday($columbusDay)) > 0, 'Columbus Day');
         $this->assertNotEquals(true, count($this->holiday->isHoliday($dummyDate)) > 0, 'Dummy Date Test');
-    }
-
-    public function testInaugurationIsNotAPublicHoliday()
-    {
-        // this date is not a public holiday in any state except Washington, DC
-        $inaugurationDate = new \DateTime('2009-01-20', $this->timezone);
-        $this->assertNotEquals(true, count($this->holiday->isHoliday($inaugurationDate)) > 0, 'First Inauguration Barack Obama');
-    }
-
-    public function testLabourDay()
-    {
-        $laborDayDate = new \DateTime('2014-09-01', $this->timezone);
-        $this->assertEquals(true, count($this->holiday->isHoliday($laborDayDate)) > 0, 'Labor Day');
-
-        $laborDayDate = new \DateTime('2023-09-04', $this->timezone);
-        $this->assertEquals(true, count($this->holiday->isHoliday($laborDayDate)) > 0, 'Labour Day');
     }
 
     public function testFollowUpDayIsHoliday()
@@ -84,14 +70,5 @@ class UsTest extends TestCase
 
         $this->assertEquals(true, count($this->holiday->isHoliday($newYears)) > 0, 'New Years Day');
         $this->assertEquals(true, count($this->holiday->isHoliday($newYearsFollowUp)) > 0, 'New Years Follow Up Day');
-    }
-
-    public function testPreviousDayIsHoliday()
-    {
-        $independenceDay = new \DateTime('2026-07-04', $this->timezone);
-        $independenceDayPreviousDay = new \DateTime('2026-07-03', $this->timezone);
-
-        $this->assertEquals(true, count($this->holiday->isHoliday($independenceDay)) > 0, 'Independence Day');
-        $this->assertEquals(true, count($this->holiday->isHoliday($independenceDayPreviousDay)) > 0, 'Independence Day Previous');
     }
 }
