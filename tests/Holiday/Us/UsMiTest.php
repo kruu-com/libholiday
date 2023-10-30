@@ -14,19 +14,19 @@
  */
 namespace Tests\Holiday\Us;
 
-use Holiday\Us\Us;
+use Holiday\Us\UsMi;
 use PHPUnit\Framework\TestCase;
 
-class UsTest extends TestCase
+class UsMiTest extends TestCase
 {
-    private ?Us $holiday = null;
+    private ?UsMi $holiday = null;
 
     private ?\DateTimeZone $timezone = null;
 
     public function setUp(): void
     {
         $this->timezone = new \DateTimeZone('UTC');
-        $this->holiday = new Us($this->timezone);
+        $this->holiday = new UsMi($this->timezone);
     }
 
     public function testIsHoliday()
@@ -61,12 +61,6 @@ class UsTest extends TestCase
         $this->assertEquals(true, count($this->holiday->isHoliday($veteransDay)) > 0, 'Veterans Day Failed');
         $this->assertEquals(true, count($this->holiday->isHoliday($columbusDay)) > 0, 'Columbus Day Failed');
         $this->assertNotEquals(true, count($this->holiday->isHoliday($dummyDate)) > 0, 'Dummy Date Test Failed');
-    }
-
-    public function testInaugurationIsNotAPublicHoliday()
-    {
-        $inaugurationDate = new \DateTime('2009-01-20', $this->timezone);
-        $this->assertNotEquals(true, count($this->holiday->isHoliday($inaugurationDate)) > 0, 'First Inauguration Barack Obama');
     }
 
     public function testFollowUpDayIsHoliday()
