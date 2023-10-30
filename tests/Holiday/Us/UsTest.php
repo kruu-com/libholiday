@@ -65,8 +65,15 @@ class UsTest extends TestCase
 
     public function testInaugurationIsNotAPublicHoliday()
     {
+        // this date is not a public holiday in any state except Washington, DC
         $inaugurationDate = new \DateTime('2009-01-20', $this->timezone);
         $this->assertNotEquals(true, count($this->holiday->isHoliday($inaugurationDate)) > 0, 'First Inauguration Barack Obama');
+    }
+
+    public function testLabourDay()
+    {
+        $laborDayDate = new \DateTime('2023-09-04', $this->timezone);
+        $this->assertEquals(true, count($this->holiday->isHoliday($laborDayDate)) > 0, 'Labour Day');
     }
 
     public function testFollowUpDayIsHoliday()
@@ -74,7 +81,16 @@ class UsTest extends TestCase
         $newYears = new \DateTime('2023-01-01', $this->timezone);
         $newYearsFollowUp = new \DateTime('2023-01-02', $this->timezone);
 
-        $this->assertEquals(true, count($this->holiday->isHoliday($newYears)) > 0, 'New Years Failed');
-        $this->assertEquals(false, count($this->holiday->isHoliday($newYearsFollowUp)) > 0, 'New Years Follow Up Failed');
+        $this->assertEquals(true, count($this->holiday->isHoliday($newYears)) > 0, 'New Years Day');
+        $this->assertEquals(true, count($this->holiday->isHoliday($newYearsFollowUp)) > 0, 'New Years Follow Up Day');
+    }
+
+    public function testPreviousDayIsHoliday()
+    {
+        $independenceDay = new \DateTime('2026-07-04', $this->timezone);
+        $independenceDayPreviousDay = new \DateTime('2026-07-03', $this->timezone);
+
+        $this->assertEquals(true, count($this->holiday->isHoliday($independenceDay)) > 0, 'Independence Day');
+        $this->assertEquals(true, count($this->holiday->isHoliday($independenceDayPreviousDay)) > 0, 'Independence Day Previous');
     }
 }

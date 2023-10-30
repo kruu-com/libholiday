@@ -42,6 +42,5 @@ class UsDcTest extends TestCase
         $inaugurationDate = new \DateTime('2021-01-20', $this->timezone);
 
         $this->assertEquals(true, count($this->holiday->isHoliday($inaugurationDate)) > 0, 'Inauguration Joe Biden');
-
     }
 }

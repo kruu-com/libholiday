@@ -68,7 +68,7 @@ class UsMiTest extends TestCase
         $newYears = new \DateTime('2023-01-01', $this->timezone);
         $newYearsFollowUp = new \DateTime('2023-01-02', $this->timezone);
 
-        $this->assertEquals(true, count($this->holiday->isHoliday($newYears)) > 0, 'New Years Failed');
-        $this->assertEquals(false, count($this->holiday->isHoliday($newYearsFollowUp)) > 0, 'New Years Follow Up Failed');
+        $this->assertEquals(true, count($this->holiday->isHoliday($newYears)) > 0, 'New Years Day');
+        $this->assertEquals(true, count($this->holiday->isHoliday($newYearsFollowUp)) > 0, 'New Years Follow Up Day');
     }
 }

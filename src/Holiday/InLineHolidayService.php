@@ -9,6 +9,9 @@ class InLineHolidayService
 
     public static function checkInLineHoliday(Holiday $holiday, array $holidays, InLineHolidayRules $rules): array
     {
+        self::$isSunday = false;
+        self::$isSaturday = false;
+
         $holidays[] = $holiday;
 
         if ($rules->areRulesApplied()) {
@@ -40,7 +43,7 @@ class InLineHolidayService
     private static function checkForWeekend($time): void
     {
         $weekday = $time->format('N');
-        switch ($weekday) {
+        switch ((int)$weekday) {
             case 6:
                 self::$isSaturday = true;
                 break;
