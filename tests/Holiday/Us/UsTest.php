@@ -41,7 +41,6 @@ class UsTest extends TestCase
         $presidentsDay = new \DateTime('2015-02-16', $this->timezone);
         $memorialDay = new \DateTime('2015-05-25', $this->timezone);
         $juneteenthDay = new \DateTime('2021-06-19', $this->timezone);
-        $veteransDay = new \DateTime('2014-11-11', $this->timezone);
         $columbusDay = new \DateTime('2014-10-13', $this->timezone);
 
         $dummyDate = new \DateTime('2015-03-11', $this->timezone);
@@ -56,7 +55,6 @@ class UsTest extends TestCase
         $this->assertEquals(true, count($this->holiday->isHoliday($presidentsDay)) > 0, 'Presidents Day');
         $this->assertEquals(true, count($this->holiday->isHoliday($memorialDay)) > 0, 'Memorial Day');
         $this->assertEquals(true, count($this->holiday->isHoliday($juneteenthDay)) > 0, 'Juneteenth Day');
-        $this->assertEquals(true, count($this->holiday->isHoliday($veteransDay)) > 0, 'Veterans Day');
         $this->assertEquals(true, count($this->holiday->isHoliday($columbusDay)) > 0, 'Columbus Day');
         $this->assertNotEquals(true, count($this->holiday->isHoliday($dummyDate)) > 0, 'Dummy Date Test');
     }

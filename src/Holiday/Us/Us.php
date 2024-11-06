@@ -65,9 +65,6 @@ class Us extends Calculator
         $independenceDay = new Holiday(new \DateTimeImmutable($year.'-07-04', $this->timezone), 'Independence Day', $this->timezone);
         $holidays = InLineHolidayService::checkInLineHoliday($independenceDay, $holidays, new InLineHolidayRules(true, false,true, true));
 
-        $veteransDay = new Holiday(new \DateTimeImmutable($year.'-11-11', $this->timezone), 'Veterans Day', $this->timezone);
-        $holidays = InLineHolidayService::checkInLineHoliday($veteransDay, $holidays, new InLineHolidayRules(true, false,true, true));
-
         $newYearsDay = new Holiday($year.'-01-01', "New Year's Day", $this->timezone);
         $holidays = InLineHolidayService::checkInLineHoliday($newYearsDay, $holidays, new InLineHolidayRules(true, false,true, true));
 
